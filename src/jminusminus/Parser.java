@@ -279,7 +279,7 @@ public class Parser {
      */
 
     private boolean seeBasicType() {
-        if (see(BOOLEAN) || see(CHAR) || see(INT)) {
+        if (see(BOOLEAN) || see(CHAR) || see(INT) || see(DOUBLE) || see(FLOAT) || see(LONG)) {
             return true;
         } else {
             return false;
@@ -302,7 +302,7 @@ public class Parser {
             return true;
         } else {
             scanner.recordPosition();
-            if (have(BOOLEAN) || have(CHAR) || have(INT)) {
+            if (have(BOOLEAN) || have(CHAR) || have(INT) || see(DOUBLE) || see(FLOAT) || see(LONG)) {
                 if (have(LBRACK) && see(RBRACK)) {
                     scanner.returnToPosition();
                     return true;
@@ -654,6 +654,19 @@ public class Parser {
             JExpression test = parExpression();
             JStatement statement = statement();
             return new JWhileStatement(line, test, statement);
+        } else if (have(FOR)) {
+            mustBe(LPAREN);
+            JExpression initialization = expression();
+            JExpression termination = expression();
+            JExpression increment = expression();
+            mustBe(RPAREN);
+            JStatement statement = statement();
+            return new JForStatement(line, initialization, termination, increment, statement);
+        } else if (have(SWITCH)) {
+            JExpression caseExpr = parExpression();
+            ArrayList<JStatement> cases = new ArrayList<JStatement>();
+            JStatement statement = statement();
+            return new JSwitchStatement(line, caseExpr, statement);
         } else if (have(RETURN)) {
             if (have(SEMI)) {
                 return new JReturnStatement(line, null);
@@ -902,6 +915,12 @@ public class Parser {
             return Type.CHAR;
         } else if (have(INT)) {
             return Type.INT;
+        } else if (have(DOUBLE)) {
+            return Type.DOUBLE;
+        } else if (have(FLOAT)) {
+            return Type.FLOAT;
+        } else if (have(LONG)) {
+            return Type.LONG;
         } else {
             reportParserError("Type sought where %s found", scanner.token()
                     .image());
@@ -1003,6 +1022,26 @@ public class Parser {
             return new JAssignOp(line, lhs, assignmentExpression());
         } else if (have(PLUS_ASSIGN)) {
             return new JPlusAssignOp(line, lhs, assignmentExpression());
+        } else if (have(AND_ASSIGN)) {
+            return new JAndAssignOp(line, lhs, assignmentExpression());
+        } else if (have(MINUS_ASSIGN)) {
+            return new JMinusAssignOp(line, lhs, assignmentExpression());
+        } else if (have(DIV_ASSIGN)) {
+            return new JDivAssignOp(line, lhs, assignmentExpression());
+        } else if (have(LSHIFT_ASSIGN)) {
+            return new JLShiftAssignOp(line, lhs, assignmentExpression());
+        } else if (have(MOD_ASSIGN)) {
+            return new JModAssignOp(line, lhs, assignmentExpression());
+        } else if (have(OR_ASSIGN)) {
+            return new JOrAssignOp(line, lhs, assignmentExpression());
+        } else if (have(RSHIFT_ASSIGN)) {
+            return new JRShiftAssignOp(line, lhs, assignmentExpression());
+        } else if (have(RSHIFTFILL_ASSIGN)) {
+            return new JRShiftFillAssignOp(line, lhs, assignmentExpression());
+        } else if (have(STAR_ASSIGN)) {
+            return new JStarAssignOp(line, lhs, assignmentExpression());
+        } else if (have(XOR_ASSIGN)) {
+            return new JXorAssignOp(line, lhs, assignmentExpression());
         } else {
             return lhs;
         }
@@ -1026,6 +1065,8 @@ public class Parser {
         while (more) {
             if (have(LAND)) {
                 lhs = new JLogicalAndOp(line, lhs, equalityExpression());
+            } else if (have(LOR)) {
+                lhs = new JLogicalOrOp(line, lhs, equalityExpression());
             } else {
                 more = false;
             }
@@ -1051,6 +1092,8 @@ public class Parser {
         while (more) {
             if (have(EQUAL)) {
                 lhs = new JEqualOp(line, lhs, relationalExpression());
+            } else if (have(NEQUAL)) {
+                lhs = new JNotEqualOp(line, lhs, relationalExpression());
             } else {
                 more = false;
             }
@@ -1072,16 +1115,49 @@ public class Parser {
 
     private JExpression relationalExpression() {
         int line = scanner.token().line();
-        JExpression lhs = additiveExpression();
+        JExpression lhs = bitwiseExpression();
         if (have(GT)) {
-            return new JGreaterThanOp(line, lhs, additiveExpression());
+            return new JGreaterThanOp(line, lhs, bitwiseExpression());
         } else if (have(LE)) {
-            return new JLessEqualOp(line, lhs, additiveExpression());
+            return new JLessEqualOp(line, lhs, bitwiseExpression());
         } else if (have(INSTANCEOF)) {
             return new JInstanceOfOp(line, lhs, referenceType());
+        } else if (have(GE)) {
+            return new JGreaterEqualOp(line, lhs, bitwiseExpression());
+        } else if (have(LT)) {
+            return new JLessThanOp(line, lhs, bitwiseExpression());
         } else {
             return lhs;
         }
+    }
+
+    /**
+     * Parse an bitwise expression.
+     *
+     * <pre>
+     *   additiveExpression ::= multiplicativeExpression // level 3
+     *                            {MINUS multiplicativeExpression}
+     * </pre>
+     *
+     * @return an AST for an additiveExpression.
+     */
+
+    private JExpression bitwiseExpression() {
+        int line = scanner.token().line();
+        JExpression lhs = additiveExpression();
+        boolean more = true;
+        while (more) {
+            if (have(RSHIFT)) {
+                return new JRShiftOp(line, lhs, additiveExpression());
+            } else if (have(LSHIFT)) {
+                return new JLShiftOp(line, lhs, additiveExpression());
+            } else if (have(RSHIFTFILL)) {
+                return new JRShiftFillOp(line, lhs, additiveExpression());
+            } else {
+                more = false;
+            }
+        }
+        return lhs;
     }
 
     /**
@@ -1129,6 +1205,10 @@ public class Parser {
         while (more) {
             if (have(STAR)) {
                 lhs = new JMultiplyOp(line, lhs, unaryExpression());
+            } if (have(DIV)) {
+                lhs = new JDivideOp(line, lhs, unaryExpression());
+            } if (have(MOD)) {
+                lhs = new JModOp(line, lhs, unaryExpression());
             } else {
                 more = false;
             }
@@ -1403,6 +1483,12 @@ public class Parser {
             return new JLiteralInt(line, scanner.previousToken().image());
         } else if (have(CHAR_LITERAL)) {
             return new JLiteralChar(line, scanner.previousToken().image());
+        } else if (have(DOUBLE_LITERAL)) {
+            return new JLiteralDouble(line, scanner.previousToken().image());
+        } else if (have(FLOAT_LITERAL)) {
+            return new JLiteralFloat(line, scanner.previousToken().image());
+        } else if (have(LONG_LITERAL)) {
+            return new JLiteralLong(line, scanner.previousToken().image());
         } else if (have(STRING_LITERAL)) {
             return new JLiteralString(line, scanner.previousToken().image());
         } else if (have(TRUE)) {
