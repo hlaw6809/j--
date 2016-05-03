@@ -150,7 +150,16 @@ class JPlusAssignOp extends JAssignment {
             lhs = (JExpression) ((JLhs) lhs).analyzeLhs(context);
         }
         rhs = (JExpression) rhs.analyze(context);
-        if (lhs.type().equals(Type.INT)) {
+        if (lhs.type().equals(Type.DOUBLE)) {
+            rhs.type().mustMatchExpected(line(), Type.DOUBLE);
+            type = Type.DOUBLE;
+        } else if (lhs.type().equals(Type.FLOAT)) {
+            rhs.type().mustMatchExpected(line(), Type.FLOAT);
+            type = Type.FLOAT;
+        } else if (lhs.type().equals(Type.LONG)) {
+            rhs.type().mustMatchExpected(line(), Type.LONG);
+            type = Type.LONG;
+        } if (lhs.type().equals(Type.INT)) {
             rhs.type().mustMatchExpected(line(), Type.INT);
             type = Type.INT;
         } else if (lhs.type().equals(Type.STRING)) {
@@ -308,7 +317,16 @@ class JMinusAssignOp extends JAssignment {
             lhs = (JExpression) ((JLhs) lhs).analyzeLhs(context);
         }
         rhs = (JExpression) rhs.analyze(context);
-        if (lhs.type().equals(Type.INT)) {
+        if (lhs.type().equals(Type.DOUBLE)) {
+            rhs.type().mustMatchExpected(line(), Type.DOUBLE);
+            type = Type.DOUBLE;
+        } else if (lhs.type().equals(Type.FLOAT)) {
+            rhs.type().mustMatchExpected(line(), Type.FLOAT);
+            type = Type.FLOAT;
+        } else if (lhs.type().equals(Type.LONG)) {
+            rhs.type().mustMatchExpected(line(), Type.LONG);
+            type = Type.LONG;
+        } if (lhs.type().equals(Type.INT)) {
             rhs.type().mustMatchExpected(line(), Type.INT);
             type = Type.INT;
         } else {
@@ -383,7 +401,16 @@ class JDivAssignOp extends JAssignment {
             lhs = (JExpression) ((JLhs) lhs).analyzeLhs(context);
         }
         rhs = (JExpression) rhs.analyze(context);
-        if (lhs.type().equals(Type.INT)) {
+        if (lhs.type().equals(Type.DOUBLE)) {
+            rhs.type().mustMatchExpected(line(), Type.DOUBLE);
+            type = Type.DOUBLE;
+        } else if (lhs.type().equals(Type.FLOAT)) {
+            rhs.type().mustMatchExpected(line(), Type.FLOAT);
+            type = Type.FLOAT;
+        } else if (lhs.type().equals(Type.LONG)) {
+            rhs.type().mustMatchExpected(line(), Type.LONG);
+            type = Type.LONG;
+        } if (lhs.type().equals(Type.INT)) {
             rhs.type().mustMatchExpected(line(), Type.INT);
             type = Type.INT;
         } else {
@@ -458,7 +485,16 @@ class JLShiftAssignOp extends JAssignment {
             lhs = (JExpression) ((JLhs) lhs).analyzeLhs(context);
         }
         rhs = (JExpression) rhs.analyze(context);
-        if (lhs.type().equals(Type.INT)) {
+        if (lhs.type().equals(Type.DOUBLE)) {
+            rhs.type().mustMatchExpected(line(), Type.DOUBLE);
+            type = Type.DOUBLE;
+        } else if (lhs.type().equals(Type.FLOAT)) {
+            rhs.type().mustMatchExpected(line(), Type.FLOAT);
+            type = Type.FLOAT;
+        } else if (lhs.type().equals(Type.LONG)) {
+            rhs.type().mustMatchExpected(line(), Type.LONG);
+            type = Type.LONG;
+        } if (lhs.type().equals(Type.INT)) {
             rhs.type().mustMatchExpected(line(), Type.INT);
             type = Type.INT;
         } else {

@@ -2,30 +2,32 @@
 
 package jminusminus;
 
-import java.util.ArrayList;
 import static jminusminus.CLConstants.*;
 
 /**
- * The AST node for a case-statement.
+ * The AST node for a throw-statement.
  */
 
-class JCaseStatement extends JStatement {
+class JThrowStatement extends JStatement {
 
+    /** The throw exception. */
+    private JExpression exception;
 
     /**
-     * Construct an AST node for a case-statement given its line number, the
+     * Construct an AST node for a catch-statement given its line number, the
      * test expression, and the body.
      * 
      * @param line
-     *            line in which the case-statement occurs in the source file.
+     *            line in which the catch-statement occurs in the source file.
      * @param params
-     *            case params.
+     *            catach params.
      * @param body
      *            the body.
      */
 
-    public JCaseStatement(int line) {
+    public JThrowStatement(int line, JExpression exception) {
         super(line);
+        this.exception = exception;
     }
 
     /**
@@ -37,7 +39,8 @@ class JCaseStatement extends JStatement {
      * @return the analyzed (and possibly rewritten) AST subtree.
      */
 
-    public JCaseStatement analyze(Context context) {
+    public JThrowStatement analyze(Context context) {
+        exception = exception.analyze(context);
         return this;
     }
 
@@ -50,7 +53,8 @@ class JCaseStatement extends JStatement {
      */
 
     public void codegen(CLEmitter output) {
-
+        // Codegen exception
+        exception.codegen(output);
     }
 
     /**
@@ -58,10 +62,15 @@ class JCaseStatement extends JStatement {
      */
 
     public void writeToStdOut(PrettyPrinter p) {
-        p.printf("<JCaseStatement line=\"%d\">\n", line());
+        p.printf("<JThrowStatement line=\"%d\">\n", line());
         p.indentRight();
+        p.printf("<Exception>\n");
+        p.indentRight();
+        exception.writeToStdOut(p);
         p.indentLeft();
-        p.printf("</JCaseStatement>\n");
+        p.printf("</Exception>\n");
+        p.indentLeft();
+        p.printf("</JThrowStatement>\n");
     }
 
 }

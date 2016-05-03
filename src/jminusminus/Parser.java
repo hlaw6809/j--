@@ -562,9 +562,14 @@ public class Parser {
                 mustBe(IDENTIFIER);
                 String name = scanner.previousToken().image();
                 ArrayList<JFormalParameter> params = formalParameters();
+                String throwsExc = "";
+                if (have(THROWS)) {
+                    mustBe(IDENTIFIER);
+                    throwsExc = scanner.previousToken().image();
+                }
                 JBlock body = have(SEMI) ? null : block();
                 memberDecl = new JMethodDeclaration(line, mods, name, type,
-                        params, body);
+                        params, throwsExc, body);
             } else {
                 type = type();
                 if (seeIdentLParen()) {
@@ -572,9 +577,14 @@ public class Parser {
                     mustBe(IDENTIFIER);
                     String name = scanner.previousToken().image();
                     ArrayList<JFormalParameter> params = formalParameters();
+                    String throwsExc = "";
+                    if (have(THROWS)) {
+                        mustBe(IDENTIFIER);
+                        throwsExc = scanner.previousToken().image();
+                    }
                     JBlock body = have(SEMI) ? null : block();
                     memberDecl = new JMethodDeclaration(line, mods, name, type,
-                            params, body);
+                            params, throwsExc, body);
                 } else {
                     // Field
                     memberDecl = new JFieldDeclaration(line, mods,
@@ -655,18 +665,45 @@ public class Parser {
             JStatement statement = statement();
             return new JWhileStatement(line, test, statement);
         } else if (have(FOR)) {
+
             mustBe(LPAREN);
-            JExpression initialization = expression();
-            JExpression termination = expression();
-            JExpression increment = expression();
+            JStatement initialization = localVariableDeclarationStatement();
+            if (see(":")) {
+
+            } else {
+                JExpression termination = expression();
+                mustBe(SEMI);
+                JExpression increment = expression();
+                JStatement statement = statement();
+            }
             mustBe(RPAREN);
-            JStatement statement = statement();
+
+
             return new JForStatement(line, initialization, termination, increment, statement);
+
+
+
+
+
+
+
+
+
+
+
+
+
         } else if (have(SWITCH)) {
             JExpression caseExpr = parExpression();
-            ArrayList<JStatement> cases = new ArrayList<JStatement>();
             JStatement statement = statement();
             return new JSwitchStatement(line, caseExpr, statement);
+        } else if(see(CASE)|| see(DEFAULT)) {
+            if (have(CASE)) {
+                JExpression caseValue = expression();
+            } else have(DEFAULT);
+
+            mustBe(COLON);
+            return new JCaseStatement(line);
         } else if (have(RETURN)) {
             if (have(SEMI)) {
                 return new JReturnStatement(line, null);
@@ -675,6 +712,19 @@ public class Parser {
                 mustBe(SEMI);
                 return new JReturnStatement(line, expr);
             }
+        } else if (have(TRY)) {
+            JStatement tryStatement = statement();
+            ArrayList<JCatchStatement> catchStatements = new ArrayList<JCatchStatement>();
+            mustBe(CATCH);
+            catchStatements.add(new JCatchStatement(scanner.token().line(), formalParameters(), statement()));
+            while(have(CATCH)) {
+                mustBe(COLON);
+                catchStatements.add(new JCatchStatement(scanner.token().line(), formalParameters(), statement()));
+            }
+            JStatement finallyStatement = have(FINALLY) ? statement() : null;
+            return new JTryStatement(line, tryStatement, catchStatements, finallyStatement);
+        } else if (have(THROW)) {
+            return new JThrowStatement(line, primary());
         } else if (have(SEMI)) {
             return new JEmptyStatement(line);
         } else { // Must be a statementExpression
@@ -973,6 +1023,7 @@ public class Parser {
         JExpression expr = expression();
         if (expr instanceof JAssignment || expr instanceof JPreIncrementOp
                 || expr instanceof JPostDecrementOp
+                || expr instanceof JPostIncrementOp
                 || expr instanceof JMessageExpression
                 || expr instanceof JSuperConstruction
                 || expr instanceof JThisConstruction || expr instanceof JNewOp
@@ -1290,6 +1341,9 @@ public class Parser {
         }
         while (have(DEC)) {
             primaryExpr = new JPostDecrementOp(line, primaryExpr);
+        }
+        while(have(INC)) {
+            primaryExpr = new JPostIncrementOp(line, primaryExpr);
         }
         return primaryExpr;
     }

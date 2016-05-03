@@ -174,8 +174,6 @@ class JSubtractOp extends JBinaryExpression {
     public JExpression analyze(Context context) {
         lhs = (JExpression) lhs.analyze(context);
         rhs = (JExpression) rhs.analyze(context);
-        lhs.type().mustMatchExpected(line(), Type.INT);
-        rhs.type().mustMatchExpected(line(), Type.INT);
         type = Type.INT;
         return this;
     }
@@ -232,8 +230,6 @@ class JMultiplyOp extends JBinaryExpression {
     public JExpression analyze(Context context) {
         lhs = (JExpression) lhs.analyze(context);
         rhs = (JExpression) rhs.analyze(context);
-        lhs.type().mustMatchExpected(line(), Type.INT);
-        rhs.type().mustMatchExpected(line(), Type.INT);
         type = Type.INT;
         return this;
     }
@@ -290,8 +286,6 @@ class JDivideOp extends JBinaryExpression {
     public JExpression analyze(Context context) {
         lhs = (JExpression) lhs.analyze(context);
         rhs = (JExpression) rhs.analyze(context);
-        lhs.type().mustMatchExpected(line(), Type.INT);
-        rhs.type().mustMatchExpected(line(), Type.INT);
         type = Type.INT;
         return this;
     }
@@ -348,8 +342,6 @@ class JModOp extends JBinaryExpression {
     public JExpression analyze(Context context) {
         lhs = (JExpression) lhs.analyze(context);
         rhs = (JExpression) rhs.analyze(context);
-        lhs.type().mustMatchExpected(line(), Type.INT);
-        rhs.type().mustMatchExpected(line(), Type.INT);
         type = Type.INT;
         return this;
     }
@@ -407,8 +399,6 @@ class JRShiftOp extends JBinaryExpression {
     public JExpression analyze(Context context) {
         lhs = (JExpression) lhs.analyze(context);
         rhs = (JExpression) rhs.analyze(context);
-        lhs.type().mustMatchExpected(line(), Type.INT);
-        rhs.type().mustMatchExpected(line(), Type.INT);
         type = Type.INT;
         return this;
     }
@@ -465,8 +455,6 @@ class JLShiftOp extends JBinaryExpression {
     public JExpression analyze(Context context) {
         lhs = (JExpression) lhs.analyze(context);
         rhs = (JExpression) rhs.analyze(context);
-        lhs.type().mustMatchExpected(line(), Type.INT);
-        rhs.type().mustMatchExpected(line(), Type.INT);
         type = Type.INT;
         return this;
     }
@@ -524,8 +512,6 @@ class JRShiftFillOp extends JBinaryExpression {
     public JExpression analyze(Context context) {
         lhs = (JExpression) lhs.analyze(context);
         rhs = (JExpression) rhs.analyze(context);
-        lhs.type().mustMatchExpected(line(), Type.INT);
-        rhs.type().mustMatchExpected(line(), Type.INT);
         type = Type.INT;
         return this;
     }

@@ -1,17 +1,12 @@
 
 package jminusminus;
 
-import jminusminus.CLEmitter;
-import jminusminus.Context;
-import jminusminus.JExpression;
-import jminusminus.JStatement;
-import jminusminus.PrettyPrinter;
-import jminusminus.Type;
+import static jminusminus.CLConstants.*;
 
 class JForStatement extends JStatement {
 
     /** initialization expression. */
-    private JExpression initialization;
+    private JStatement initialization;
 
     /** termination expression. */
     private JExpression termination;
@@ -34,7 +29,7 @@ class JForStatement extends JStatement {
      *            the body.
      */
 
-    public JForStatement(int line, JExpression initialization, JExpression termination, JExpression increment, JStatement body) {
+    public JForStatement(int line, JStatement initialization, JExpression termination, JExpression increment, JStatement body) {
         super(line);
         this.initialization = initialization;
         this.termination = termination;
@@ -51,13 +46,10 @@ class JForStatement extends JStatement {
      * @return the analyzed (and possibly rewritten) AST subtree.
      */
     public JForStatement analyze(Context context) {
-        this.initialization = this.initialization.analyze(context);
-        this.initialization.type().mustMatchExpected(this.line(), Type.BOOLEAN);
-        this.termination = this.termination.analyze(context);
-        this.termination.type().mustMatchExpected(this.line(), Type.BOOLEAN);
-        this.increment = this.increment.analyze(context);
-        this.increment.type().mustMatchExpected(this.line(), Type.BOOLEAN);
-        this.body = (JStatement)this.body.analyze(context);
+        this.initialization = (JStatement) initialization.analyze(context);
+        this.termination = (JExpression) termination.analyze(context);
+        this.increment = (JExpression) increment.analyze(context);
+        this.body = (JStatement) body.analyze(context);
         return this;
     }
 
@@ -79,13 +71,13 @@ class JForStatement extends JStatement {
         // Branch out of the loop on the test condition
         // being false
         output.addLabel(test);
-        this.termination.codegen(output, out, false);
+        termination.codegen(output, out, false);
 
         // Codegen body
-        this.body.codegen(output);
+        body.codegen(output);
 
         // Codegen increment
-        this.increment.codegen(output);
+        increment.codegen(output);
 
         // Unconditional jump back up to test
         output.addBranchInstruction(GOTO, test);

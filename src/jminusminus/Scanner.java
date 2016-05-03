@@ -148,7 +148,6 @@ class Scanner {
                 		}
                 	}
                 } else {
-                	nextCh();
                 	if (ch == '=') {
                 		nextCh();
                 		return new TokenInfo(DIV_ASSIGN, line);
@@ -186,6 +185,9 @@ class Scanner {
         case ',':
             nextCh();
             return new TokenInfo(COMMA, line);
+        case ':':
+            nextCh();
+            return new TokenInfo(COLON, line);
         case '=':
             nextCh();
             if (ch == '=') {
@@ -275,6 +277,7 @@ class Scanner {
             } else if (ch == '<') {
             	nextCh();
             	if (ch == '=') {
+                    nextCh();
             		return new TokenInfo(LSHIFT_ASSIGN, line);
             	} else {
             		return new TokenInfo(LSHIFT, line);
