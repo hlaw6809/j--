@@ -316,24 +316,8 @@ class Scanner {
         	nextCh();
         	return new TokenInfo(COMPLIMENT, line);
         case '?':
-        	buffer = new StringBuffer();
         	nextCh();
-        	while (ch != ':' && ch != EOFCH && ch != ';') {
-        		buffer.append(ch);
-        		nextCh();
-        	}
-        	if (ch == EOFCH) {
-        		reportScannerError("Unexpected end of line found in Conditional Operator");
-        	} else {
-        		while (ch != ';' && ch != EOFCH) {
-        			buffer.append(ch);
-        			nextCh();
-        		}
-        		if (ch == EOFCH) {
-        			reportScannerError("Unexpected end of line found in Conditional Operator");
-        		}
-        		return new TokenInfo(CONDITIONAL, buffer.toString(), line);
-        	}
+            return new TokenInfo(CONDITIONAL, line);
         case '\'':
             buffer = new StringBuffer();
             buffer.append('\'');

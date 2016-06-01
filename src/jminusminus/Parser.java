@@ -569,7 +569,7 @@ public class Parser {
                 }
                 JBlock body = have(SEMI) ? null : block();
                 memberDecl = new JMethodDeclaration(line, mods, name, type,
-                        params, throwsExc, body);
+                        params, body);
             } else {
                 type = type();
                 if (seeIdentLParen()) {
@@ -584,7 +584,7 @@ public class Parser {
                     }
                     JBlock body = have(SEMI) ? null : block();
                     memberDecl = new JMethodDeclaration(line, mods, name, type,
-                            params, throwsExc, body);
+                            params, body);
                 } else {
                     // Field
                     memberDecl = new JFieldDeclaration(line, mods,
@@ -664,35 +664,20 @@ public class Parser {
             JExpression test = parExpression();
             JStatement statement = statement();
             return new JWhileStatement(line, test, statement);
+        } else if (have(DO)) {
+            JStatement statement = statement();
+            mustBe(WHILE);
+            JExpression test = parExpression();
+            return new JDoWhileStatement(line, test, statement);
         } else if (have(FOR)) {
-
             mustBe(LPAREN);
             JStatement initialization = localVariableDeclarationStatement();
-            if (see(":")) {
-
-            } else {
-                JExpression termination = expression();
-                mustBe(SEMI);
-                JExpression increment = expression();
-                JStatement statement = statement();
-            }
+            JExpression termination = expression();
+            mustBe(SEMI);
+            JExpression increment = expression();
             mustBe(RPAREN);
-
-
+            JStatement statement = statement();
             return new JForStatement(line, initialization, termination, increment, statement);
-
-
-
-
-
-
-
-
-
-
-
-
-
         } else if (have(SWITCH)) {
             JExpression caseExpr = parExpression();
             JStatement statement = statement();
@@ -724,7 +709,8 @@ public class Parser {
             JStatement finallyStatement = have(FINALLY) ? statement() : null;
             return new JTryStatement(line, tryStatement, catchStatements, finallyStatement);
         } else if (have(THROW)) {
-            return new JThrowStatement(line, primary());
+            mustBe(IDENTIFIER);
+            return new JThrowStatement(line, scanner.previousToken().image());
         } else if (have(SEMI)) {
             return new JEmptyStatement(line);
         } else { // Must be a statementExpression
@@ -1093,6 +1079,11 @@ public class Parser {
             return new JStarAssignOp(line, lhs, assignmentExpression());
         } else if (have(XOR_ASSIGN)) {
             return new JXorAssignOp(line, lhs, assignmentExpression());
+        } else if (have(CONDITIONAL)){
+            JExpression lCondOp = assignmentExpression();
+            mustBe(COLON);
+            JExpression rCondOp = assignmentExpression();
+            return new JConditionalOp(line, lhs, lCondOp, rCondOp);
         } else {
             return lhs;
         }

@@ -180,8 +180,20 @@ class JCompilationUnit extends JAST {
      */
 
     public JAST analyze(Context context) {
+        boolean publicClassFound = false;
         for (JAST typeDeclaration : typeDeclarations) {
             typeDeclaration.analyze(this.context);
+            if (typeDeclaration instanceof JClassDeclaration) {
+                ArrayList<String> mods = ((JClassDeclaration) typeDeclaration).mods();
+                if (mods.contains("public")) {
+                    if (publicClassFound) {
+                        JAST.compilationUnit.reportSemanticError(typeDeclaration.line(),
+                                "File already contains public class type");
+                    } else {
+                        publicClassFound = true;
+                    }
+                }
+            }
         }
         return this;
     }

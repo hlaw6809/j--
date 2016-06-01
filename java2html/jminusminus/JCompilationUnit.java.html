@@ -197,78 +197,90 @@
 <FONT ID="LN">180 </FONT><A NAME="180"></A>     */</FONT>
 <FONT ID="LN">181 </FONT><A NAME="181"></A>
 <FONT ID="LN">182 </FONT><A NAME="182"></A>    <FONT ID="Public">public</FONT> <A HREF="../jminusminus/JAST.java.html">JAST</A> analyze(<A HREF="../jminusminus/Context.java.html">Context</A> context) {
-<FONT ID="LN">183 </FONT><A NAME="183"></A>        <FONT ID="For">for</FONT> (<A HREF="../jminusminus/JAST.java.html">JAST</A> typeDeclaration : typeDeclarations) {
-<FONT ID="LN">184 </FONT><A NAME="184"></A>            typeDeclaration.analyze(<FONT ID="This">this</FONT>.context);
-<FONT ID="LN">185 </FONT><A NAME="185"></A>        }
-<FONT ID="LN">186 </FONT><A NAME="186"></A>        <FONT ID="Return">return</FONT> <FONT ID="This">this</FONT>;
-<FONT ID="LN">187 </FONT><A NAME="187"></A>    }
-<FONT ID="LN">188 </FONT><A NAME="188"></A>
-<FONT ID="LN">189 </FONT><A NAME="189"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">190 </FONT><A NAME="190"></A>     * Generating code for a compilation unit means generating code for each of
-<FONT ID="LN">191 </FONT><A NAME="191"></A>     * the type declarations.
-<FONT ID="LN">192 </FONT><A NAME="192"></A>     * 
-<FONT ID="LN">193 </FONT><A NAME="193"></A>     * @param output
-<FONT ID="LN">194 </FONT><A NAME="194"></A>     *            the code emitter (basically an abstraction for producing the
-<FONT ID="LN">195 </FONT><A NAME="195"></A>     *            .class file).
-<FONT ID="LN">196 </FONT><A NAME="196"></A>     */</FONT>
-<FONT ID="LN">197 </FONT><A NAME="197"></A>
-<FONT ID="LN">198 </FONT><A NAME="198"></A>    <FONT ID="Public">public</FONT> <FONT ID="Void">void</FONT> codegen(<A HREF="../jminusminus/CLEmitter.java.html">CLEmitter</A> output) {
-<FONT ID="LN">199 </FONT><A NAME="199"></A>        <FONT ID="For">for</FONT> (<A HREF="../jminusminus/JAST.java.html">JAST</A> typeDeclaration : typeDeclarations) {
-<FONT ID="LN">200 </FONT><A NAME="200"></A>            typeDeclaration.codegen(output);
-<FONT ID="LN">201 </FONT><A NAME="201"></A>            output.write();
-<FONT ID="LN">202 </FONT><A NAME="202"></A>            clFiles.add(output.clFile());
-<FONT ID="LN">203 </FONT><A NAME="203"></A>        }
-<FONT ID="LN">204 </FONT><A NAME="204"></A>    }
-<FONT ID="LN">205 </FONT><A NAME="205"></A>
-<FONT ID="LN">206 </FONT><A NAME="206"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">207 </FONT><A NAME="207"></A>     * Return the list of CLFile objects corresponding to the type declarations
-<FONT ID="LN">208 </FONT><A NAME="208"></A>     * in this compilation unit.
-<FONT ID="LN">209 </FONT><A NAME="209"></A>     * 
-<FONT ID="LN">210 </FONT><A NAME="210"></A>     * @return list of CLFile objects.
-<FONT ID="LN">211 </FONT><A NAME="211"></A>     */</FONT>
-<FONT ID="LN">212 </FONT><A NAME="212"></A>
-<FONT ID="LN">213 </FONT><A NAME="213"></A>    <FONT ID="Public">public</FONT> ArrayList&lt;<A HREF="../jminusminus/CLFile.java.html">CLFile</A>&gt; clFiles() {
-<FONT ID="LN">214 </FONT><A NAME="214"></A>        <FONT ID="Return">return</FONT> clFiles;
-<FONT ID="LN">215 </FONT><A NAME="215"></A>    }
-<FONT ID="LN">216 </FONT><A NAME="216"></A>
-<FONT ID="LN">217 </FONT><A NAME="217"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">218 </FONT><A NAME="218"></A>     * @inheritDoc
-<FONT ID="LN">219 </FONT><A NAME="219"></A>     */</FONT>
-<FONT ID="LN">220 </FONT><A NAME="220"></A>
-<FONT ID="LN">221 </FONT><A NAME="221"></A>    <FONT ID="Public">public</FONT> <FONT ID="Void">void</FONT> writeToStdOut(PrettyPrinter p) {
-<FONT ID="LN">222 </FONT><A NAME="222"></A>        p.println(<FONT ID="StringLiteral">"&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;"</FONT>);
-<FONT ID="LN">223 </FONT><A NAME="223"></A>        p.printf(<FONT ID="StringLiteral">"&lt;JCompilationUnit line=\"%d\"&gt;\n"</FONT>, line());
-<FONT ID="LN">224 </FONT><A NAME="224"></A>        p.indentRight();
-<FONT ID="LN">225 </FONT><A NAME="225"></A>        p.printf(<FONT ID="StringLiteral">"&lt;Source fileName=\"%s\"/&gt;\n"</FONT>, fileName);
-<FONT ID="LN">226 </FONT><A NAME="226"></A>        <FONT ID="If">if</FONT> (context != <FONT ID="Null">null</FONT>) {
-<FONT ID="LN">227 </FONT><A NAME="227"></A>            context.writeToStdOut(p);
-<FONT ID="LN">228 </FONT><A NAME="228"></A>        }
-<FONT ID="LN">229 </FONT><A NAME="229"></A>        <FONT ID="If">if</FONT> (packageName != <FONT ID="Null">null</FONT>) {
-<FONT ID="LN">230 </FONT><A NAME="230"></A>            p.printf(<FONT ID="StringLiteral">"&lt;Package name=\"%s\"/&gt;\n"</FONT>, packageName());
-<FONT ID="LN">231 </FONT><A NAME="231"></A>        }
-<FONT ID="LN">232 </FONT><A NAME="232"></A>        <FONT ID="If">if</FONT> (imports != <FONT ID="Null">null</FONT>) {
-<FONT ID="LN">233 </FONT><A NAME="233"></A>            p.println(<FONT ID="StringLiteral">"&lt;Imports&gt;"</FONT>);
-<FONT ID="LN">234 </FONT><A NAME="234"></A>            p.indentRight();
-<FONT ID="LN">235 </FONT><A NAME="235"></A>            <FONT ID="For">for</FONT> (TypeName imported : imports) {
-<FONT ID="LN">236 </FONT><A NAME="236"></A>                p.printf(<FONT ID="StringLiteral">"&lt;Import name=\"%s\"/&gt;\n"</FONT>, imported.toString());
-<FONT ID="LN">237 </FONT><A NAME="237"></A>            }
-<FONT ID="LN">238 </FONT><A NAME="238"></A>            p.indentLeft();
-<FONT ID="LN">239 </FONT><A NAME="239"></A>            p.println(<FONT ID="StringLiteral">"&lt;/Imports&gt;"</FONT>);
+<FONT ID="LN">183 </FONT><A NAME="183"></A>        <FONT ID="Boolean">boolean</FONT> publicClassFound = <FONT ID="False">false</FONT>;
+<FONT ID="LN">184 </FONT><A NAME="184"></A>        <FONT ID="For">for</FONT> (<A HREF="../jminusminus/JAST.java.html">JAST</A> typeDeclaration : typeDeclarations) {
+<FONT ID="LN">185 </FONT><A NAME="185"></A>            typeDeclaration.analyze(<FONT ID="This">this</FONT>.context);
+<FONT ID="LN">186 </FONT><A NAME="186"></A>            <FONT ID="If">if</FONT> (typeDeclaration <FONT ID="InstanceOf">instanceof</FONT> <A HREF="../jminusminus/JClassDeclaration.java.html">JClassDeclaration</A>) {
+<FONT ID="LN">187 </FONT><A NAME="187"></A>                ArrayList&lt;String&gt; mods = ((<A HREF="../jminusminus/JClassDeclaration.java.html">JClassDeclaration</A>) typeDeclaration).mods();
+<FONT ID="LN">188 </FONT><A NAME="188"></A>                <FONT ID="If">if</FONT> (mods.contains(<FONT ID="StringLiteral">"public"</FONT>)) {
+<FONT ID="LN">189 </FONT><A NAME="189"></A>                    <FONT ID="If">if</FONT> (publicClassFound) {
+<FONT ID="LN">190 </FONT><A NAME="190"></A>                        JAST.compilationUnit.reportSemanticError(typeDeclaration.line(),
+<FONT ID="LN">191 </FONT><A NAME="191"></A>                                <FONT ID="StringLiteral">"File already contains public class type"</FONT>);
+<FONT ID="LN">192 </FONT><A NAME="192"></A>                    } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">193 </FONT><A NAME="193"></A>                        publicClassFound = <FONT ID="True">true</FONT>;
+<FONT ID="LN">194 </FONT><A NAME="194"></A>                    }
+<FONT ID="LN">195 </FONT><A NAME="195"></A>                }
+<FONT ID="LN">196 </FONT><A NAME="196"></A>            }
+<FONT ID="LN">197 </FONT><A NAME="197"></A>        }
+<FONT ID="LN">198 </FONT><A NAME="198"></A>        <FONT ID="Return">return</FONT> <FONT ID="This">this</FONT>;
+<FONT ID="LN">199 </FONT><A NAME="199"></A>    }
+<FONT ID="LN">200 </FONT><A NAME="200"></A>
+<FONT ID="LN">201 </FONT><A NAME="201"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">202 </FONT><A NAME="202"></A>     * Generating code for a compilation unit means generating code for each of
+<FONT ID="LN">203 </FONT><A NAME="203"></A>     * the type declarations.
+<FONT ID="LN">204 </FONT><A NAME="204"></A>     * 
+<FONT ID="LN">205 </FONT><A NAME="205"></A>     * @param output
+<FONT ID="LN">206 </FONT><A NAME="206"></A>     *            the code emitter (basically an abstraction for producing the
+<FONT ID="LN">207 </FONT><A NAME="207"></A>     *            .class file).
+<FONT ID="LN">208 </FONT><A NAME="208"></A>     */</FONT>
+<FONT ID="LN">209 </FONT><A NAME="209"></A>
+<FONT ID="LN">210 </FONT><A NAME="210"></A>    <FONT ID="Public">public</FONT> <FONT ID="Void">void</FONT> codegen(<A HREF="../jminusminus/CLEmitter.java.html">CLEmitter</A> output) {
+<FONT ID="LN">211 </FONT><A NAME="211"></A>        <FONT ID="For">for</FONT> (<A HREF="../jminusminus/JAST.java.html">JAST</A> typeDeclaration : typeDeclarations) {
+<FONT ID="LN">212 </FONT><A NAME="212"></A>            typeDeclaration.codegen(output);
+<FONT ID="LN">213 </FONT><A NAME="213"></A>            output.write();
+<FONT ID="LN">214 </FONT><A NAME="214"></A>            clFiles.add(output.clFile());
+<FONT ID="LN">215 </FONT><A NAME="215"></A>        }
+<FONT ID="LN">216 </FONT><A NAME="216"></A>    }
+<FONT ID="LN">217 </FONT><A NAME="217"></A>
+<FONT ID="LN">218 </FONT><A NAME="218"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">219 </FONT><A NAME="219"></A>     * Return the list of CLFile objects corresponding to the type declarations
+<FONT ID="LN">220 </FONT><A NAME="220"></A>     * in this compilation unit.
+<FONT ID="LN">221 </FONT><A NAME="221"></A>     * 
+<FONT ID="LN">222 </FONT><A NAME="222"></A>     * @return list of CLFile objects.
+<FONT ID="LN">223 </FONT><A NAME="223"></A>     */</FONT>
+<FONT ID="LN">224 </FONT><A NAME="224"></A>
+<FONT ID="LN">225 </FONT><A NAME="225"></A>    <FONT ID="Public">public</FONT> ArrayList&lt;<A HREF="../jminusminus/CLFile.java.html">CLFile</A>&gt; clFiles() {
+<FONT ID="LN">226 </FONT><A NAME="226"></A>        <FONT ID="Return">return</FONT> clFiles;
+<FONT ID="LN">227 </FONT><A NAME="227"></A>    }
+<FONT ID="LN">228 </FONT><A NAME="228"></A>
+<FONT ID="LN">229 </FONT><A NAME="229"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">230 </FONT><A NAME="230"></A>     * @inheritDoc
+<FONT ID="LN">231 </FONT><A NAME="231"></A>     */</FONT>
+<FONT ID="LN">232 </FONT><A NAME="232"></A>
+<FONT ID="LN">233 </FONT><A NAME="233"></A>    <FONT ID="Public">public</FONT> <FONT ID="Void">void</FONT> writeToStdOut(PrettyPrinter p) {
+<FONT ID="LN">234 </FONT><A NAME="234"></A>        p.println(<FONT ID="StringLiteral">"&lt;?xml version=\"1.0\" encoding=\"utf-8\"?&gt;"</FONT>);
+<FONT ID="LN">235 </FONT><A NAME="235"></A>        p.printf(<FONT ID="StringLiteral">"&lt;JCompilationUnit line=\"%d\"&gt;\n"</FONT>, line());
+<FONT ID="LN">236 </FONT><A NAME="236"></A>        p.indentRight();
+<FONT ID="LN">237 </FONT><A NAME="237"></A>        p.printf(<FONT ID="StringLiteral">"&lt;Source fileName=\"%s\"/&gt;\n"</FONT>, fileName);
+<FONT ID="LN">238 </FONT><A NAME="238"></A>        <FONT ID="If">if</FONT> (context != <FONT ID="Null">null</FONT>) {
+<FONT ID="LN">239 </FONT><A NAME="239"></A>            context.writeToStdOut(p);
 <FONT ID="LN">240 </FONT><A NAME="240"></A>        }
-<FONT ID="LN">241 </FONT><A NAME="241"></A>        <FONT ID="If">if</FONT> (typeDeclarations != <FONT ID="Null">null</FONT>) {
-<FONT ID="LN">242 </FONT><A NAME="242"></A>            p.println(<FONT ID="StringLiteral">"&lt;TypeDeclarations&gt;"</FONT>);
-<FONT ID="LN">243 </FONT><A NAME="243"></A>            p.indentRight();
-<FONT ID="LN">244 </FONT><A NAME="244"></A>            <FONT ID="For">for</FONT> (<A HREF="../jminusminus/JAST.java.html">JAST</A> typeDeclaration : typeDeclarations) {
-<FONT ID="LN">245 </FONT><A NAME="245"></A>                typeDeclaration.writeToStdOut(p);
-<FONT ID="LN">246 </FONT><A NAME="246"></A>            }
-<FONT ID="LN">247 </FONT><A NAME="247"></A>            p.indentLeft();
-<FONT ID="LN">248 </FONT><A NAME="248"></A>            p.println(<FONT ID="StringLiteral">"&lt;/TypeDeclarations&gt;"</FONT>);
-<FONT ID="LN">249 </FONT><A NAME="249"></A>        }
-<FONT ID="LN">250 </FONT><A NAME="250"></A>        p.indentLeft();
-<FONT ID="LN">251 </FONT><A NAME="251"></A>        p.println(<FONT ID="StringLiteral">"&lt;/JCompilationUnit&gt;"</FONT>);
-<FONT ID="LN">252 </FONT><A NAME="252"></A>    }
-<FONT ID="LN">253 </FONT><A NAME="253"></A>
-<FONT ID="LN">254 </FONT><A NAME="254"></A>}
-<FONT ID="LN">255 </FONT><A NAME="255"></A></pre>
+<FONT ID="LN">241 </FONT><A NAME="241"></A>        <FONT ID="If">if</FONT> (packageName != <FONT ID="Null">null</FONT>) {
+<FONT ID="LN">242 </FONT><A NAME="242"></A>            p.printf(<FONT ID="StringLiteral">"&lt;Package name=\"%s\"/&gt;\n"</FONT>, packageName());
+<FONT ID="LN">243 </FONT><A NAME="243"></A>        }
+<FONT ID="LN">244 </FONT><A NAME="244"></A>        <FONT ID="If">if</FONT> (imports != <FONT ID="Null">null</FONT>) {
+<FONT ID="LN">245 </FONT><A NAME="245"></A>            p.println(<FONT ID="StringLiteral">"&lt;Imports&gt;"</FONT>);
+<FONT ID="LN">246 </FONT><A NAME="246"></A>            p.indentRight();
+<FONT ID="LN">247 </FONT><A NAME="247"></A>            <FONT ID="For">for</FONT> (TypeName imported : imports) {
+<FONT ID="LN">248 </FONT><A NAME="248"></A>                p.printf(<FONT ID="StringLiteral">"&lt;Import name=\"%s\"/&gt;\n"</FONT>, imported.toString());
+<FONT ID="LN">249 </FONT><A NAME="249"></A>            }
+<FONT ID="LN">250 </FONT><A NAME="250"></A>            p.indentLeft();
+<FONT ID="LN">251 </FONT><A NAME="251"></A>            p.println(<FONT ID="StringLiteral">"&lt;/Imports&gt;"</FONT>);
+<FONT ID="LN">252 </FONT><A NAME="252"></A>        }
+<FONT ID="LN">253 </FONT><A NAME="253"></A>        <FONT ID="If">if</FONT> (typeDeclarations != <FONT ID="Null">null</FONT>) {
+<FONT ID="LN">254 </FONT><A NAME="254"></A>            p.println(<FONT ID="StringLiteral">"&lt;TypeDeclarations&gt;"</FONT>);
+<FONT ID="LN">255 </FONT><A NAME="255"></A>            p.indentRight();
+<FONT ID="LN">256 </FONT><A NAME="256"></A>            <FONT ID="For">for</FONT> (<A HREF="../jminusminus/JAST.java.html">JAST</A> typeDeclaration : typeDeclarations) {
+<FONT ID="LN">257 </FONT><A NAME="257"></A>                typeDeclaration.writeToStdOut(p);
+<FONT ID="LN">258 </FONT><A NAME="258"></A>            }
+<FONT ID="LN">259 </FONT><A NAME="259"></A>            p.indentLeft();
+<FONT ID="LN">260 </FONT><A NAME="260"></A>            p.println(<FONT ID="StringLiteral">"&lt;/TypeDeclarations&gt;"</FONT>);
+<FONT ID="LN">261 </FONT><A NAME="261"></A>        }
+<FONT ID="LN">262 </FONT><A NAME="262"></A>        p.indentLeft();
+<FONT ID="LN">263 </FONT><A NAME="263"></A>        p.println(<FONT ID="StringLiteral">"&lt;/JCompilationUnit&gt;"</FONT>);
+<FONT ID="LN">264 </FONT><A NAME="264"></A>    }
+<FONT ID="LN">265 </FONT><A NAME="265"></A>
+<FONT ID="LN">266 </FONT><A NAME="266"></A>}
+<FONT ID="LN">267 </FONT><A NAME="267"></A></pre>
 </BODY>
 </HTML>

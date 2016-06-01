@@ -71,6 +71,7 @@ class JVariable extends JExpression implements JLhs {
             Field field = definingType.fieldFor(name);
             if (field == null) {
                 type = Type.ANY;
+                context.addEntry(line, name, new TypeNameDefn(type));
                 JAST.compilationUnit.reportSemanticError(line,
                         "Cannot find name: " + name);
             } else {

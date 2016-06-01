@@ -165,532 +165,520 @@
 <FONT ID="LN">148 </FONT><A NAME="148"></A>                        }
 <FONT ID="LN">149 </FONT><A NAME="149"></A>                    }
 <FONT ID="LN">150 </FONT><A NAME="150"></A>                } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">151 </FONT><A NAME="151"></A>                    reportScannerError(<FONT ID="StringLiteral">"Operator / is not supported in j--."</FONT>);
-<FONT ID="LN">152 </FONT><A NAME="152"></A>                }
-<FONT ID="LN">153 </FONT><A NAME="153"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">154 </FONT><A NAME="154"></A>                moreWhiteSpace = <FONT ID="False">false</FONT>;
-<FONT ID="LN">155 </FONT><A NAME="155"></A>            }
-<FONT ID="LN">156 </FONT><A NAME="156"></A>        }
-<FONT ID="LN">157 </FONT><A NAME="157"></A>        line = input.line();
-<FONT ID="LN">158 </FONT><A NAME="158"></A>        <FONT ID="Switch">switch</FONT> (ch) {
-<FONT ID="LN">159 </FONT><A NAME="159"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'('</FONT>:
-<FONT ID="LN">160 </FONT><A NAME="160"></A>            nextCh();
-<FONT ID="LN">161 </FONT><A NAME="161"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LPAREN, line);
-<FONT ID="LN">162 </FONT><A NAME="162"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">')'</FONT>:
-<FONT ID="LN">163 </FONT><A NAME="163"></A>            nextCh();
-<FONT ID="LN">164 </FONT><A NAME="164"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RPAREN, line);
-<FONT ID="LN">165 </FONT><A NAME="165"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'{'</FONT>:
-<FONT ID="LN">166 </FONT><A NAME="166"></A>            nextCh();
-<FONT ID="LN">167 </FONT><A NAME="167"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LCURLY, line);
-<FONT ID="LN">168 </FONT><A NAME="168"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'}'</FONT>:
-<FONT ID="LN">169 </FONT><A NAME="169"></A>            nextCh();
-<FONT ID="LN">170 </FONT><A NAME="170"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RCURLY, line);
-<FONT ID="LN">171 </FONT><A NAME="171"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'['</FONT>:
-<FONT ID="LN">172 </FONT><A NAME="172"></A>            nextCh();
-<FONT ID="LN">173 </FONT><A NAME="173"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LBRACK, line);
-<FONT ID="LN">174 </FONT><A NAME="174"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">']'</FONT>:
-<FONT ID="LN">175 </FONT><A NAME="175"></A>            nextCh();
-<FONT ID="LN">176 </FONT><A NAME="176"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RBRACK, line);
-<FONT ID="LN">177 </FONT><A NAME="177"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">';'</FONT>:
-<FONT ID="LN">178 </FONT><A NAME="178"></A>            nextCh();
-<FONT ID="LN">179 </FONT><A NAME="179"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(SEMI, line);
-<FONT ID="LN">180 </FONT><A NAME="180"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">','</FONT>:
-<FONT ID="LN">181 </FONT><A NAME="181"></A>            nextCh();
-<FONT ID="LN">182 </FONT><A NAME="182"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(COMMA, line);
-<FONT ID="LN">183 </FONT><A NAME="183"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'='</FONT>:
-<FONT ID="LN">184 </FONT><A NAME="184"></A>            nextCh();
-<FONT ID="LN">185 </FONT><A NAME="185"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
-<FONT ID="LN">186 </FONT><A NAME="186"></A>                nextCh();
-<FONT ID="LN">187 </FONT><A NAME="187"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(EQUAL, line);
-<FONT ID="LN">188 </FONT><A NAME="188"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">189 </FONT><A NAME="189"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(ASSIGN, line);
-<FONT ID="LN">190 </FONT><A NAME="190"></A>            }
-<FONT ID="LN">191 </FONT><A NAME="191"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'!'</FONT>:
+<FONT ID="LN">151 </FONT><A NAME="151"></A>                    <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">152 </FONT><A NAME="152"></A>                        nextCh();
+<FONT ID="LN">153 </FONT><A NAME="153"></A>                        <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(DIV_ASSIGN, line);
+<FONT ID="LN">154 </FONT><A NAME="154"></A>                    } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">155 </FONT><A NAME="155"></A>                        <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(DIV, line);
+<FONT ID="LN">156 </FONT><A NAME="156"></A>                    }
+<FONT ID="LN">157 </FONT><A NAME="157"></A>                }
+<FONT ID="LN">158 </FONT><A NAME="158"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">159 </FONT><A NAME="159"></A>                moreWhiteSpace = <FONT ID="False">false</FONT>;
+<FONT ID="LN">160 </FONT><A NAME="160"></A>            }
+<FONT ID="LN">161 </FONT><A NAME="161"></A>        }
+<FONT ID="LN">162 </FONT><A NAME="162"></A>        line = input.line();
+<FONT ID="LN">163 </FONT><A NAME="163"></A>        <FONT ID="Switch">switch</FONT> (ch) {
+<FONT ID="LN">164 </FONT><A NAME="164"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'('</FONT>:
+<FONT ID="LN">165 </FONT><A NAME="165"></A>            nextCh();
+<FONT ID="LN">166 </FONT><A NAME="166"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LPAREN, line);
+<FONT ID="LN">167 </FONT><A NAME="167"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">')'</FONT>:
+<FONT ID="LN">168 </FONT><A NAME="168"></A>            nextCh();
+<FONT ID="LN">169 </FONT><A NAME="169"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RPAREN, line);
+<FONT ID="LN">170 </FONT><A NAME="170"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'{'</FONT>:
+<FONT ID="LN">171 </FONT><A NAME="171"></A>            nextCh();
+<FONT ID="LN">172 </FONT><A NAME="172"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LCURLY, line);
+<FONT ID="LN">173 </FONT><A NAME="173"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'}'</FONT>:
+<FONT ID="LN">174 </FONT><A NAME="174"></A>            nextCh();
+<FONT ID="LN">175 </FONT><A NAME="175"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RCURLY, line);
+<FONT ID="LN">176 </FONT><A NAME="176"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'['</FONT>:
+<FONT ID="LN">177 </FONT><A NAME="177"></A>            nextCh();
+<FONT ID="LN">178 </FONT><A NAME="178"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LBRACK, line);
+<FONT ID="LN">179 </FONT><A NAME="179"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">']'</FONT>:
+<FONT ID="LN">180 </FONT><A NAME="180"></A>            nextCh();
+<FONT ID="LN">181 </FONT><A NAME="181"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RBRACK, line);
+<FONT ID="LN">182 </FONT><A NAME="182"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">';'</FONT>:
+<FONT ID="LN">183 </FONT><A NAME="183"></A>            nextCh();
+<FONT ID="LN">184 </FONT><A NAME="184"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(SEMI, line);
+<FONT ID="LN">185 </FONT><A NAME="185"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">','</FONT>:
+<FONT ID="LN">186 </FONT><A NAME="186"></A>            nextCh();
+<FONT ID="LN">187 </FONT><A NAME="187"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(COMMA, line);
+<FONT ID="LN">188 </FONT><A NAME="188"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">':'</FONT>:
+<FONT ID="LN">189 </FONT><A NAME="189"></A>            nextCh();
+<FONT ID="LN">190 </FONT><A NAME="190"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(COLON, line);
+<FONT ID="LN">191 </FONT><A NAME="191"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'='</FONT>:
 <FONT ID="LN">192 </FONT><A NAME="192"></A>            nextCh();
 <FONT ID="LN">193 </FONT><A NAME="193"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
 <FONT ID="LN">194 </FONT><A NAME="194"></A>                nextCh();
-<FONT ID="LN">195 </FONT><A NAME="195"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(NEQUAL, line);
+<FONT ID="LN">195 </FONT><A NAME="195"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(EQUAL, line);
 <FONT ID="LN">196 </FONT><A NAME="196"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">197 </FONT><A NAME="197"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LNOT, line);
+<FONT ID="LN">197 </FONT><A NAME="197"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(ASSIGN, line);
 <FONT ID="LN">198 </FONT><A NAME="198"></A>            }
-<FONT ID="LN">199 </FONT><A NAME="199"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'*'</FONT>:
+<FONT ID="LN">199 </FONT><A NAME="199"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'!'</FONT>:
 <FONT ID="LN">200 </FONT><A NAME="200"></A>            nextCh();
 <FONT ID="LN">201 </FONT><A NAME="201"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
 <FONT ID="LN">202 </FONT><A NAME="202"></A>                nextCh();
-<FONT ID="LN">203 </FONT><A NAME="203"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(STAR_ASSIGN, line);
+<FONT ID="LN">203 </FONT><A NAME="203"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(NEQUAL, line);
 <FONT ID="LN">204 </FONT><A NAME="204"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">205 </FONT><A NAME="205"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(STAR, line);
-<FONT ID="LN">206 </FONT><A NAME="206"></A>            }   
-<FONT ID="LN">207 </FONT><A NAME="207"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'+'</FONT>:
+<FONT ID="LN">205 </FONT><A NAME="205"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LNOT, line);
+<FONT ID="LN">206 </FONT><A NAME="206"></A>            }
+<FONT ID="LN">207 </FONT><A NAME="207"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'*'</FONT>:
 <FONT ID="LN">208 </FONT><A NAME="208"></A>            nextCh();
 <FONT ID="LN">209 </FONT><A NAME="209"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
 <FONT ID="LN">210 </FONT><A NAME="210"></A>                nextCh();
-<FONT ID="LN">211 </FONT><A NAME="211"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(PLUS_ASSIGN, line);
-<FONT ID="LN">212 </FONT><A NAME="212"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'+'</FONT>) {
-<FONT ID="LN">213 </FONT><A NAME="213"></A>                nextCh();
-<FONT ID="LN">214 </FONT><A NAME="214"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(INC, line);
-<FONT ID="LN">215 </FONT><A NAME="215"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">216 </FONT><A NAME="216"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(PLUS, line);
-<FONT ID="LN">217 </FONT><A NAME="217"></A>            }
-<FONT ID="LN">218 </FONT><A NAME="218"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'-'</FONT>:
-<FONT ID="LN">219 </FONT><A NAME="219"></A>            nextCh();
-<FONT ID="LN">220 </FONT><A NAME="220"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">211 </FONT><A NAME="211"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(STAR_ASSIGN, line);
+<FONT ID="LN">212 </FONT><A NAME="212"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">213 </FONT><A NAME="213"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(STAR, line);
+<FONT ID="LN">214 </FONT><A NAME="214"></A>            }   
+<FONT ID="LN">215 </FONT><A NAME="215"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'+'</FONT>:
+<FONT ID="LN">216 </FONT><A NAME="216"></A>            nextCh();
+<FONT ID="LN">217 </FONT><A NAME="217"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">218 </FONT><A NAME="218"></A>                nextCh();
+<FONT ID="LN">219 </FONT><A NAME="219"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(PLUS_ASSIGN, line);
+<FONT ID="LN">220 </FONT><A NAME="220"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'+'</FONT>) {
 <FONT ID="LN">221 </FONT><A NAME="221"></A>                nextCh();
-<FONT ID="LN">222 </FONT><A NAME="222"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(MINUS_ASSIGN, line);
-<FONT ID="LN">223 </FONT><A NAME="223"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'-'</FONT>) {
-<FONT ID="LN">224 </FONT><A NAME="224"></A>                nextCh();
-<FONT ID="LN">225 </FONT><A NAME="225"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(DEC, line);
-<FONT ID="LN">226 </FONT><A NAME="226"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">227 </FONT><A NAME="227"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(MINUS, line);
-<FONT ID="LN">228 </FONT><A NAME="228"></A>            }
-<FONT ID="LN">229 </FONT><A NAME="229"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'&amp;'</FONT>:
-<FONT ID="LN">230 </FONT><A NAME="230"></A>            nextCh();
-<FONT ID="LN">231 </FONT><A NAME="231"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'&amp;'</FONT>) {
+<FONT ID="LN">222 </FONT><A NAME="222"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(INC, line);
+<FONT ID="LN">223 </FONT><A NAME="223"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">224 </FONT><A NAME="224"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(PLUS, line);
+<FONT ID="LN">225 </FONT><A NAME="225"></A>            }
+<FONT ID="LN">226 </FONT><A NAME="226"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'-'</FONT>:
+<FONT ID="LN">227 </FONT><A NAME="227"></A>            nextCh();
+<FONT ID="LN">228 </FONT><A NAME="228"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">229 </FONT><A NAME="229"></A>                nextCh();
+<FONT ID="LN">230 </FONT><A NAME="230"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(MINUS_ASSIGN, line);
+<FONT ID="LN">231 </FONT><A NAME="231"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'-'</FONT>) {
 <FONT ID="LN">232 </FONT><A NAME="232"></A>                nextCh();
-<FONT ID="LN">233 </FONT><A NAME="233"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LAND, line);
-<FONT ID="LN">234 </FONT><A NAME="234"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
-<FONT ID="LN">235 </FONT><A NAME="235"></A>                nextCh();
-<FONT ID="LN">236 </FONT><A NAME="236"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(AND_ASSIGN, line);
-<FONT ID="LN">237 </FONT><A NAME="237"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">238 </FONT><A NAME="238"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(AND, line);
-<FONT ID="LN">239 </FONT><A NAME="239"></A>            }
-<FONT ID="LN">240 </FONT><A NAME="240"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'&gt;'</FONT>:
-<FONT ID="LN">241 </FONT><A NAME="241"></A>            nextCh();
-<FONT ID="LN">242 </FONT><A NAME="242"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">233 </FONT><A NAME="233"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(DEC, line);
+<FONT ID="LN">234 </FONT><A NAME="234"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">235 </FONT><A NAME="235"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(MINUS, line);
+<FONT ID="LN">236 </FONT><A NAME="236"></A>            }
+<FONT ID="LN">237 </FONT><A NAME="237"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'&amp;'</FONT>:
+<FONT ID="LN">238 </FONT><A NAME="238"></A>            nextCh();
+<FONT ID="LN">239 </FONT><A NAME="239"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'&amp;'</FONT>) {
+<FONT ID="LN">240 </FONT><A NAME="240"></A>                nextCh();
+<FONT ID="LN">241 </FONT><A NAME="241"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LAND, line);
+<FONT ID="LN">242 </FONT><A NAME="242"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
 <FONT ID="LN">243 </FONT><A NAME="243"></A>                nextCh();
-<FONT ID="LN">244 </FONT><A NAME="244"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(GE, line);
-<FONT ID="LN">245 </FONT><A NAME="245"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'&gt;'</FONT>) {
-<FONT ID="LN">246 </FONT><A NAME="246"></A>                nextCh();
-<FONT ID="LN">247 </FONT><A NAME="247"></A>                <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'&gt;'</FONT>) {
-<FONT ID="LN">248 </FONT><A NAME="248"></A>                    nextCh();
-<FONT ID="LN">249 </FONT><A NAME="249"></A>                    <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
-<FONT ID="LN">250 </FONT><A NAME="250"></A>                        nextCh();
-<FONT ID="LN">251 </FONT><A NAME="251"></A>                        <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RSHIFTFILL_ASSIGN, line);
-<FONT ID="LN">252 </FONT><A NAME="252"></A>                    } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">253 </FONT><A NAME="253"></A>                        <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RSHIFTFILL, line);
-<FONT ID="LN">254 </FONT><A NAME="254"></A>                    }
-<FONT ID="LN">255 </FONT><A NAME="255"></A>                } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">244 </FONT><A NAME="244"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(AND_ASSIGN, line);
+<FONT ID="LN">245 </FONT><A NAME="245"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">246 </FONT><A NAME="246"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(AND, line);
+<FONT ID="LN">247 </FONT><A NAME="247"></A>            }
+<FONT ID="LN">248 </FONT><A NAME="248"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'&gt;'</FONT>:
+<FONT ID="LN">249 </FONT><A NAME="249"></A>            nextCh();
+<FONT ID="LN">250 </FONT><A NAME="250"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">251 </FONT><A NAME="251"></A>                nextCh();
+<FONT ID="LN">252 </FONT><A NAME="252"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(GE, line);
+<FONT ID="LN">253 </FONT><A NAME="253"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'&gt;'</FONT>) {
+<FONT ID="LN">254 </FONT><A NAME="254"></A>                nextCh();
+<FONT ID="LN">255 </FONT><A NAME="255"></A>                <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'&gt;'</FONT>) {
 <FONT ID="LN">256 </FONT><A NAME="256"></A>                    nextCh();
-<FONT ID="LN">257 </FONT><A NAME="257"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RSHIFT_ASSIGN, line);
-<FONT ID="LN">258 </FONT><A NAME="258"></A>                } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">259 </FONT><A NAME="259"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RSHIFT, line);
-<FONT ID="LN">260 </FONT><A NAME="260"></A>                }
-<FONT ID="LN">261 </FONT><A NAME="261"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">262 </FONT><A NAME="262"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(GT, line);
-<FONT ID="LN">263 </FONT><A NAME="263"></A>            }
-<FONT ID="LN">264 </FONT><A NAME="264"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'&lt;'</FONT>:
-<FONT ID="LN">265 </FONT><A NAME="265"></A>            nextCh();
-<FONT ID="LN">266 </FONT><A NAME="266"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
-<FONT ID="LN">267 </FONT><A NAME="267"></A>                nextCh();
-<FONT ID="LN">268 </FONT><A NAME="268"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LE, line);
-<FONT ID="LN">269 </FONT><A NAME="269"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'&lt;'</FONT>) {
-<FONT ID="LN">270 </FONT><A NAME="270"></A>                nextCh();
-<FONT ID="LN">271 </FONT><A NAME="271"></A>                <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
-<FONT ID="LN">272 </FONT><A NAME="272"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LSHIFT_ASSIGN, line);
-<FONT ID="LN">273 </FONT><A NAME="273"></A>                } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">274 </FONT><A NAME="274"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LSHIFT, line);
-<FONT ID="LN">275 </FONT><A NAME="275"></A>                }
-<FONT ID="LN">276 </FONT><A NAME="276"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">277 </FONT><A NAME="277"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LT, line);
-<FONT ID="LN">278 </FONT><A NAME="278"></A>            }
-<FONT ID="LN">279 </FONT><A NAME="279"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'/'</FONT>:
-<FONT ID="LN">280 </FONT><A NAME="280"></A>            nextCh();
-<FONT ID="LN">281 </FONT><A NAME="281"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
-<FONT ID="LN">282 </FONT><A NAME="282"></A>                nextCh();
-<FONT ID="LN">283 </FONT><A NAME="283"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(DIV_ASSIGN, line);
-<FONT ID="LN">284 </FONT><A NAME="284"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">285 </FONT><A NAME="285"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(DIV, line);
-<FONT ID="LN">286 </FONT><A NAME="286"></A>            }
-<FONT ID="LN">287 </FONT><A NAME="287"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'|'</FONT>:
-<FONT ID="LN">288 </FONT><A NAME="288"></A>            nextCh();
-<FONT ID="LN">289 </FONT><A NAME="289"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'|'</FONT>) {
-<FONT ID="LN">290 </FONT><A NAME="290"></A>                nextCh();
-<FONT ID="LN">291 </FONT><A NAME="291"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LOR, line);
-<FONT ID="LN">292 </FONT><A NAME="292"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
-<FONT ID="LN">293 </FONT><A NAME="293"></A>                nextCh();
-<FONT ID="LN">294 </FONT><A NAME="294"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(OR_ASSIGN, line);
-<FONT ID="LN">295 </FONT><A NAME="295"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">296 </FONT><A NAME="296"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(OR, line);
-<FONT ID="LN">297 </FONT><A NAME="297"></A>            }
-<FONT ID="LN">298 </FONT><A NAME="298"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'%'</FONT>:
-<FONT ID="LN">299 </FONT><A NAME="299"></A>            nextCh();
-<FONT ID="LN">300 </FONT><A NAME="300"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
-<FONT ID="LN">301 </FONT><A NAME="301"></A>                nextCh();
-<FONT ID="LN">302 </FONT><A NAME="302"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(MOD_ASSIGN, line);
-<FONT ID="LN">303 </FONT><A NAME="303"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">304 </FONT><A NAME="304"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(MOD, line);
-<FONT ID="LN">305 </FONT><A NAME="305"></A>            }
-<FONT ID="LN">306 </FONT><A NAME="306"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'^'</FONT>:
-<FONT ID="LN">307 </FONT><A NAME="307"></A>            nextCh();
-<FONT ID="LN">308 </FONT><A NAME="308"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
-<FONT ID="LN">309 </FONT><A NAME="309"></A>                nextCh();
-<FONT ID="LN">310 </FONT><A NAME="310"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(XOR_ASSIGN, line);
-<FONT ID="LN">311 </FONT><A NAME="311"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">312 </FONT><A NAME="312"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(XOR, line);
-<FONT ID="LN">313 </FONT><A NAME="313"></A>            }
-<FONT ID="LN">314 </FONT><A NAME="314"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'~'</FONT>:
-<FONT ID="LN">315 </FONT><A NAME="315"></A>            nextCh();
-<FONT ID="LN">316 </FONT><A NAME="316"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(COMPLIMENT, line);
-<FONT ID="LN">317 </FONT><A NAME="317"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'?'</FONT>:
-<FONT ID="LN">318 </FONT><A NAME="318"></A>            buffer = <FONT ID="New">new</FONT> StringBuffer();
+<FONT ID="LN">257 </FONT><A NAME="257"></A>                    <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">258 </FONT><A NAME="258"></A>                        nextCh();
+<FONT ID="LN">259 </FONT><A NAME="259"></A>                        <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RSHIFTFILL_ASSIGN, line);
+<FONT ID="LN">260 </FONT><A NAME="260"></A>                    } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">261 </FONT><A NAME="261"></A>                        <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RSHIFTFILL, line);
+<FONT ID="LN">262 </FONT><A NAME="262"></A>                    }
+<FONT ID="LN">263 </FONT><A NAME="263"></A>                } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">264 </FONT><A NAME="264"></A>                    nextCh();
+<FONT ID="LN">265 </FONT><A NAME="265"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RSHIFT_ASSIGN, line);
+<FONT ID="LN">266 </FONT><A NAME="266"></A>                } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">267 </FONT><A NAME="267"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(RSHIFT, line);
+<FONT ID="LN">268 </FONT><A NAME="268"></A>                }
+<FONT ID="LN">269 </FONT><A NAME="269"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">270 </FONT><A NAME="270"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(GT, line);
+<FONT ID="LN">271 </FONT><A NAME="271"></A>            }
+<FONT ID="LN">272 </FONT><A NAME="272"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'&lt;'</FONT>:
+<FONT ID="LN">273 </FONT><A NAME="273"></A>            nextCh();
+<FONT ID="LN">274 </FONT><A NAME="274"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">275 </FONT><A NAME="275"></A>                nextCh();
+<FONT ID="LN">276 </FONT><A NAME="276"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LE, line);
+<FONT ID="LN">277 </FONT><A NAME="277"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'&lt;'</FONT>) {
+<FONT ID="LN">278 </FONT><A NAME="278"></A>                nextCh();
+<FONT ID="LN">279 </FONT><A NAME="279"></A>                <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">280 </FONT><A NAME="280"></A>                    nextCh();
+<FONT ID="LN">281 </FONT><A NAME="281"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LSHIFT_ASSIGN, line);
+<FONT ID="LN">282 </FONT><A NAME="282"></A>                } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">283 </FONT><A NAME="283"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LSHIFT, line);
+<FONT ID="LN">284 </FONT><A NAME="284"></A>                }
+<FONT ID="LN">285 </FONT><A NAME="285"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">286 </FONT><A NAME="286"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LT, line);
+<FONT ID="LN">287 </FONT><A NAME="287"></A>            }
+<FONT ID="LN">288 </FONT><A NAME="288"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'|'</FONT>:
+<FONT ID="LN">289 </FONT><A NAME="289"></A>            nextCh();
+<FONT ID="LN">290 </FONT><A NAME="290"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'|'</FONT>) {
+<FONT ID="LN">291 </FONT><A NAME="291"></A>                nextCh();
+<FONT ID="LN">292 </FONT><A NAME="292"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LOR, line);
+<FONT ID="LN">293 </FONT><A NAME="293"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">294 </FONT><A NAME="294"></A>                nextCh();
+<FONT ID="LN">295 </FONT><A NAME="295"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(OR_ASSIGN, line);
+<FONT ID="LN">296 </FONT><A NAME="296"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">297 </FONT><A NAME="297"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(OR, line);
+<FONT ID="LN">298 </FONT><A NAME="298"></A>            }
+<FONT ID="LN">299 </FONT><A NAME="299"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'%'</FONT>:
+<FONT ID="LN">300 </FONT><A NAME="300"></A>            nextCh();
+<FONT ID="LN">301 </FONT><A NAME="301"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">302 </FONT><A NAME="302"></A>                nextCh();
+<FONT ID="LN">303 </FONT><A NAME="303"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(MOD_ASSIGN, line);
+<FONT ID="LN">304 </FONT><A NAME="304"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">305 </FONT><A NAME="305"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(MOD, line);
+<FONT ID="LN">306 </FONT><A NAME="306"></A>            }
+<FONT ID="LN">307 </FONT><A NAME="307"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'^'</FONT>:
+<FONT ID="LN">308 </FONT><A NAME="308"></A>            nextCh();
+<FONT ID="LN">309 </FONT><A NAME="309"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'='</FONT>) {
+<FONT ID="LN">310 </FONT><A NAME="310"></A>                nextCh();
+<FONT ID="LN">311 </FONT><A NAME="311"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(XOR_ASSIGN, line);
+<FONT ID="LN">312 </FONT><A NAME="312"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">313 </FONT><A NAME="313"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(XOR, line);
+<FONT ID="LN">314 </FONT><A NAME="314"></A>            }
+<FONT ID="LN">315 </FONT><A NAME="315"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'~'</FONT>:
+<FONT ID="LN">316 </FONT><A NAME="316"></A>            nextCh();
+<FONT ID="LN">317 </FONT><A NAME="317"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(COMPLIMENT, line);
+<FONT ID="LN">318 </FONT><A NAME="318"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'?'</FONT>:
 <FONT ID="LN">319 </FONT><A NAME="319"></A>            nextCh();
-<FONT ID="LN">320 </FONT><A NAME="320"></A>            <FONT ID="While">while</FONT> (ch != <FONT ID="CharacerLiteral">':'</FONT> &amp;&amp; ch != EOFCH &amp;&amp; ch != <FONT ID="CharacerLiteral">';'</FONT>) {
-<FONT ID="LN">321 </FONT><A NAME="321"></A>                buffer.append(ch);
-<FONT ID="LN">322 </FONT><A NAME="322"></A>                nextCh();
-<FONT ID="LN">323 </FONT><A NAME="323"></A>            }
-<FONT ID="LN">324 </FONT><A NAME="324"></A>            <FONT ID="If">if</FONT> (ch == EOFCH) {
-<FONT ID="LN">325 </FONT><A NAME="325"></A>                reportScannerError(<FONT ID="StringLiteral">"Unexpected end of line found in Conditional Operator"</FONT>);
-<FONT ID="LN">326 </FONT><A NAME="326"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">327 </FONT><A NAME="327"></A>                <FONT ID="While">while</FONT> (ch != <FONT ID="CharacerLiteral">';'</FONT> &amp;&amp; ch != EOFCH) {
-<FONT ID="LN">328 </FONT><A NAME="328"></A>                    buffer.append(ch);
-<FONT ID="LN">329 </FONT><A NAME="329"></A>                    nextCh();
-<FONT ID="LN">330 </FONT><A NAME="330"></A>                }
-<FONT ID="LN">331 </FONT><A NAME="331"></A>                <FONT ID="If">if</FONT> (ch == EOFCH) {
-<FONT ID="LN">332 </FONT><A NAME="332"></A>                    reportScannerError(<FONT ID="StringLiteral">"Unexpected end of line found in Conditional Operator"</FONT>);
-<FONT ID="LN">333 </FONT><A NAME="333"></A>                }
-<FONT ID="LN">334 </FONT><A NAME="334"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(CONDITIONAL, buffer.toString(), line);
-<FONT ID="LN">335 </FONT><A NAME="335"></A>            }
-<FONT ID="LN">336 </FONT><A NAME="336"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\''</FONT>:
-<FONT ID="LN">337 </FONT><A NAME="337"></A>            buffer = <FONT ID="New">new</FONT> StringBuffer();
-<FONT ID="LN">338 </FONT><A NAME="338"></A>            buffer.append(<FONT ID="CharacerLiteral">'\''</FONT>);
-<FONT ID="LN">339 </FONT><A NAME="339"></A>            nextCh();
-<FONT ID="LN">340 </FONT><A NAME="340"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'\\'</FONT>) {
-<FONT ID="LN">341 </FONT><A NAME="341"></A>                nextCh();
-<FONT ID="LN">342 </FONT><A NAME="342"></A>                buffer.append(escape());
-<FONT ID="LN">343 </FONT><A NAME="343"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">344 </FONT><A NAME="344"></A>                buffer.append(ch);
-<FONT ID="LN">345 </FONT><A NAME="345"></A>                nextCh();
-<FONT ID="LN">346 </FONT><A NAME="346"></A>            }
-<FONT ID="LN">347 </FONT><A NAME="347"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'\''</FONT>) {
-<FONT ID="LN">348 </FONT><A NAME="348"></A>                buffer.append(<FONT ID="CharacerLiteral">'\''</FONT>);
-<FONT ID="LN">349 </FONT><A NAME="349"></A>                nextCh();
-<FONT ID="LN">350 </FONT><A NAME="350"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(CHAR_LITERAL, buffer.toString(), line);
-<FONT ID="LN">351 </FONT><A NAME="351"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">352 </FONT><A NAME="352"></A>                <FONT ID="SingleLineComment">// Expected a ' ; report error and try to
-<FONT ID="LN">353 </FONT><A NAME="353"></A></FONT>                <FONT ID="SingleLineComment">// recover.
-<FONT ID="LN">354 </FONT><A NAME="354"></A></FONT>                reportScannerError(ch
-<FONT ID="LN">355 </FONT><A NAME="355"></A>                        + <FONT ID="StringLiteral">" found by scanner where closing ' was expected."</FONT>);
-<FONT ID="LN">356 </FONT><A NAME="356"></A>                <FONT ID="While">while</FONT> (ch != <FONT ID="CharacerLiteral">'\''</FONT> &amp;&amp; ch != <FONT ID="CharacerLiteral">';'</FONT> &amp;&amp; ch != <FONT ID="CharacerLiteral">'\n'</FONT>) {
-<FONT ID="LN">357 </FONT><A NAME="357"></A>                    nextCh();
-<FONT ID="LN">358 </FONT><A NAME="358"></A>                }
-<FONT ID="LN">359 </FONT><A NAME="359"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(CHAR_LITERAL, buffer.toString(), line);
-<FONT ID="LN">360 </FONT><A NAME="360"></A>            }
-<FONT ID="LN">361 </FONT><A NAME="361"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'"'</FONT>:
-<FONT ID="LN">362 </FONT><A NAME="362"></A>            buffer = <FONT ID="New">new</FONT> StringBuffer();
-<FONT ID="LN">363 </FONT><A NAME="363"></A>            buffer.append(<FONT ID="StringLiteral">"\""</FONT>);
-<FONT ID="LN">364 </FONT><A NAME="364"></A>            nextCh();
-<FONT ID="LN">365 </FONT><A NAME="365"></A>            <FONT ID="While">while</FONT> (ch != <FONT ID="CharacerLiteral">'"'</FONT> &amp;&amp; ch != <FONT ID="CharacerLiteral">'\n'</FONT> &amp;&amp; ch != EOFCH) {
-<FONT ID="LN">366 </FONT><A NAME="366"></A>                <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'\\'</FONT>) {
-<FONT ID="LN">367 </FONT><A NAME="367"></A>                    nextCh();
-<FONT ID="LN">368 </FONT><A NAME="368"></A>                    buffer.append(escape());
-<FONT ID="LN">369 </FONT><A NAME="369"></A>                } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">370 </FONT><A NAME="370"></A>                    buffer.append(ch);
-<FONT ID="LN">371 </FONT><A NAME="371"></A>                    nextCh();
-<FONT ID="LN">372 </FONT><A NAME="372"></A>                }
-<FONT ID="LN">373 </FONT><A NAME="373"></A>            }
-<FONT ID="LN">374 </FONT><A NAME="374"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'\n'</FONT>) {
-<FONT ID="LN">375 </FONT><A NAME="375"></A>                reportScannerError(<FONT ID="StringLiteral">"Unexpected end of line found in String"</FONT>);
-<FONT ID="LN">376 </FONT><A NAME="376"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == EOFCH) {
-<FONT ID="LN">377 </FONT><A NAME="377"></A>                reportScannerError(<FONT ID="StringLiteral">"Unexpected end of file found in String"</FONT>);
-<FONT ID="LN">378 </FONT><A NAME="378"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">379 </FONT><A NAME="379"></A>                <FONT ID="SingleLineComment">// Scan the closing "
-<FONT ID="LN">380 </FONT><A NAME="380"></A></FONT>                nextCh();
-<FONT ID="LN">381 </FONT><A NAME="381"></A>                buffer.append(<FONT ID="StringLiteral">"\""</FONT>);
-<FONT ID="LN">382 </FONT><A NAME="382"></A>            }
-<FONT ID="LN">383 </FONT><A NAME="383"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(STRING_LITERAL, buffer.toString(), line);
-<FONT ID="LN">384 </FONT><A NAME="384"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'.'</FONT>:
-<FONT ID="LN">385 </FONT><A NAME="385"></A>            nextCh();
-<FONT ID="LN">386 </FONT><A NAME="386"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(DOT, line);
-<FONT ID="LN">387 </FONT><A NAME="387"></A>        <FONT ID="Case">case</FONT> EOFCH:
-<FONT ID="LN">388 </FONT><A NAME="388"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(EOF, line);
-<FONT ID="LN">389 </FONT><A NAME="389"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'0'</FONT>:
-<FONT ID="LN">390 </FONT><A NAME="390"></A>            <FONT ID="SingleLineComment">// Handle only simple decimal integers for now.
-<FONT ID="LN">391 </FONT><A NAME="391"></A></FONT>            nextCh();
-<FONT ID="LN">392 </FONT><A NAME="392"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(INT_LITERAL, <FONT ID="StringLiteral">"0"</FONT>, line);
-<FONT ID="LN">393 </FONT><A NAME="393"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'1'</FONT>:
-<FONT ID="LN">394 </FONT><A NAME="394"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'2'</FONT>:
-<FONT ID="LN">395 </FONT><A NAME="395"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'3'</FONT>:
-<FONT ID="LN">396 </FONT><A NAME="396"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'4'</FONT>:
-<FONT ID="LN">397 </FONT><A NAME="397"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'5'</FONT>:
-<FONT ID="LN">398 </FONT><A NAME="398"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'6'</FONT>:
-<FONT ID="LN">399 </FONT><A NAME="399"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'7'</FONT>:
-<FONT ID="LN">400 </FONT><A NAME="400"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'8'</FONT>:
-<FONT ID="LN">401 </FONT><A NAME="401"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'9'</FONT>:
-<FONT ID="LN">402 </FONT><A NAME="402"></A>            buffer = <FONT ID="New">new</FONT> StringBuffer();
-<FONT ID="LN">403 </FONT><A NAME="403"></A>            <FONT ID="While">while</FONT> (isDigit(ch)) {
-<FONT ID="LN">404 </FONT><A NAME="404"></A>                buffer.append(ch);
-<FONT ID="LN">405 </FONT><A NAME="405"></A>                nextCh();
-<FONT ID="LN">406 </FONT><A NAME="406"></A>            }
-<FONT ID="LN">407 </FONT><A NAME="407"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'L'</FONT>) {
-<FONT ID="LN">408 </FONT><A NAME="408"></A>                nextCh();
-<FONT ID="LN">409 </FONT><A NAME="409"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LONG_LITERAL, buffer.toString(), line);
-<FONT ID="LN">410 </FONT><A NAME="410"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'.'</FONT>) {
-<FONT ID="LN">411 </FONT><A NAME="411"></A>                buffer.append(<FONT ID="CharacerLiteral">'.'</FONT>);
-<FONT ID="LN">412 </FONT><A NAME="412"></A>                nextCh();
-<FONT ID="LN">413 </FONT><A NAME="413"></A>                <FONT ID="While">while</FONT>(isDigit(ch)) {
-<FONT ID="LN">414 </FONT><A NAME="414"></A>                    buffer.append(ch);
-<FONT ID="LN">415 </FONT><A NAME="415"></A>                    nextCh();
-<FONT ID="LN">416 </FONT><A NAME="416"></A>                }
-<FONT ID="LN">417 </FONT><A NAME="417"></A>                <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'f'</FONT>) {
-<FONT ID="LN">418 </FONT><A NAME="418"></A>                    nextCh();
-<FONT ID="LN">419 </FONT><A NAME="419"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(FLOAT_LITERAL, buffer.toString(), line);
-<FONT ID="LN">420 </FONT><A NAME="420"></A>                } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">421 </FONT><A NAME="421"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(DOUBLE_LITERAL, buffer.toString(), line);
-<FONT ID="LN">422 </FONT><A NAME="422"></A>                }
-<FONT ID="LN">423 </FONT><A NAME="423"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">424 </FONT><A NAME="424"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(INT_LITERAL, buffer.toString(), line);
-<FONT ID="LN">425 </FONT><A NAME="425"></A>            }
-<FONT ID="LN">426 </FONT><A NAME="426"></A>        <FONT ID="Default">default</FONT>:
-<FONT ID="LN">427 </FONT><A NAME="427"></A>            <FONT ID="If">if</FONT> (isIdentifierStart(ch)) {
-<FONT ID="LN">428 </FONT><A NAME="428"></A>                buffer = <FONT ID="New">new</FONT> StringBuffer();
-<FONT ID="LN">429 </FONT><A NAME="429"></A>                <FONT ID="While">while</FONT> (isIdentifierPart(ch)) {
-<FONT ID="LN">430 </FONT><A NAME="430"></A>                    buffer.append(ch);
-<FONT ID="LN">431 </FONT><A NAME="431"></A>                    nextCh();
-<FONT ID="LN">432 </FONT><A NAME="432"></A>                }
-<FONT ID="LN">433 </FONT><A NAME="433"></A>                String identifier = buffer.toString();
-<FONT ID="LN">434 </FONT><A NAME="434"></A>                <FONT ID="If">if</FONT> (reserved.containsKey(identifier)) {
-<FONT ID="LN">435 </FONT><A NAME="435"></A>                    TokenKind reservedKind = reserved.get(identifier);
-<FONT ID="LN">436 </FONT><A NAME="436"></A>                    <FONT ID="If">if</FONT> (reservedKind == TRUE || reservedKind == FALSE) {
-<FONT ID="LN">437 </FONT><A NAME="437"></A>                        <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(BOOLEAN_LITERAL, reservedKind.image(), line);
-<FONT ID="LN">438 </FONT><A NAME="438"></A>                    } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">439 </FONT><A NAME="439"></A>                        <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(reservedKind, line);
-<FONT ID="LN">440 </FONT><A NAME="440"></A>                    }
-<FONT ID="LN">441 </FONT><A NAME="441"></A>                } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">442 </FONT><A NAME="442"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(IDENTIFIER, identifier, line);
-<FONT ID="LN">443 </FONT><A NAME="443"></A>                }
-<FONT ID="LN">444 </FONT><A NAME="444"></A>            } <FONT ID="Else">else</FONT> {
-<FONT ID="LN">445 </FONT><A NAME="445"></A>                reportScannerError(<FONT ID="StringLiteral">"Unidentified input token: '%c'"</FONT>, ch);
-<FONT ID="LN">446 </FONT><A NAME="446"></A>                nextCh();
-<FONT ID="LN">447 </FONT><A NAME="447"></A>                <FONT ID="Return">return</FONT> getNextToken();
-<FONT ID="LN">448 </FONT><A NAME="448"></A>            }
-<FONT ID="LN">449 </FONT><A NAME="449"></A>        }
-<FONT ID="LN">450 </FONT><A NAME="450"></A>    }
-<FONT ID="LN">451 </FONT><A NAME="451"></A>
-<FONT ID="LN">452 </FONT><A NAME="452"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">453 </FONT><A NAME="453"></A>     * Scan and return an escaped character.
-<FONT ID="LN">454 </FONT><A NAME="454"></A>     * 
-<FONT ID="LN">455 </FONT><A NAME="455"></A>     * @return escaped character.
-<FONT ID="LN">456 </FONT><A NAME="456"></A>     */</FONT>
-<FONT ID="LN">457 </FONT><A NAME="457"></A>
-<FONT ID="LN">458 </FONT><A NAME="458"></A>    <FONT ID="Private">private</FONT> String escape() {
-<FONT ID="LN">459 </FONT><A NAME="459"></A>        <FONT ID="Switch">switch</FONT> (ch) {
-<FONT ID="LN">460 </FONT><A NAME="460"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'b'</FONT>:
+<FONT ID="LN">320 </FONT><A NAME="320"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(CONDITIONAL, line);
+<FONT ID="LN">321 </FONT><A NAME="321"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\''</FONT>:
+<FONT ID="LN">322 </FONT><A NAME="322"></A>            buffer = <FONT ID="New">new</FONT> StringBuffer();
+<FONT ID="LN">323 </FONT><A NAME="323"></A>            buffer.append(<FONT ID="CharacerLiteral">'\''</FONT>);
+<FONT ID="LN">324 </FONT><A NAME="324"></A>            nextCh();
+<FONT ID="LN">325 </FONT><A NAME="325"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'\\'</FONT>) {
+<FONT ID="LN">326 </FONT><A NAME="326"></A>                nextCh();
+<FONT ID="LN">327 </FONT><A NAME="327"></A>                buffer.append(escape());
+<FONT ID="LN">328 </FONT><A NAME="328"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">329 </FONT><A NAME="329"></A>                buffer.append(ch);
+<FONT ID="LN">330 </FONT><A NAME="330"></A>                nextCh();
+<FONT ID="LN">331 </FONT><A NAME="331"></A>            }
+<FONT ID="LN">332 </FONT><A NAME="332"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'\''</FONT>) {
+<FONT ID="LN">333 </FONT><A NAME="333"></A>                buffer.append(<FONT ID="CharacerLiteral">'\''</FONT>);
+<FONT ID="LN">334 </FONT><A NAME="334"></A>                nextCh();
+<FONT ID="LN">335 </FONT><A NAME="335"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(CHAR_LITERAL, buffer.toString(), line);
+<FONT ID="LN">336 </FONT><A NAME="336"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">337 </FONT><A NAME="337"></A>                <FONT ID="SingleLineComment">// Expected a ' ; report error and try to
+<FONT ID="LN">338 </FONT><A NAME="338"></A></FONT>                <FONT ID="SingleLineComment">// recover.
+<FONT ID="LN">339 </FONT><A NAME="339"></A></FONT>                reportScannerError(ch
+<FONT ID="LN">340 </FONT><A NAME="340"></A>                        + <FONT ID="StringLiteral">" found by scanner where closing ' was expected."</FONT>);
+<FONT ID="LN">341 </FONT><A NAME="341"></A>                <FONT ID="While">while</FONT> (ch != <FONT ID="CharacerLiteral">'\''</FONT> &amp;&amp; ch != <FONT ID="CharacerLiteral">';'</FONT> &amp;&amp; ch != <FONT ID="CharacerLiteral">'\n'</FONT>) {
+<FONT ID="LN">342 </FONT><A NAME="342"></A>                    nextCh();
+<FONT ID="LN">343 </FONT><A NAME="343"></A>                }
+<FONT ID="LN">344 </FONT><A NAME="344"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(CHAR_LITERAL, buffer.toString(), line);
+<FONT ID="LN">345 </FONT><A NAME="345"></A>            }
+<FONT ID="LN">346 </FONT><A NAME="346"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'"'</FONT>:
+<FONT ID="LN">347 </FONT><A NAME="347"></A>            buffer = <FONT ID="New">new</FONT> StringBuffer();
+<FONT ID="LN">348 </FONT><A NAME="348"></A>            buffer.append(<FONT ID="StringLiteral">"\""</FONT>);
+<FONT ID="LN">349 </FONT><A NAME="349"></A>            nextCh();
+<FONT ID="LN">350 </FONT><A NAME="350"></A>            <FONT ID="While">while</FONT> (ch != <FONT ID="CharacerLiteral">'"'</FONT> &amp;&amp; ch != <FONT ID="CharacerLiteral">'\n'</FONT> &amp;&amp; ch != EOFCH) {
+<FONT ID="LN">351 </FONT><A NAME="351"></A>                <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'\\'</FONT>) {
+<FONT ID="LN">352 </FONT><A NAME="352"></A>                    nextCh();
+<FONT ID="LN">353 </FONT><A NAME="353"></A>                    buffer.append(escape());
+<FONT ID="LN">354 </FONT><A NAME="354"></A>                } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">355 </FONT><A NAME="355"></A>                    buffer.append(ch);
+<FONT ID="LN">356 </FONT><A NAME="356"></A>                    nextCh();
+<FONT ID="LN">357 </FONT><A NAME="357"></A>                }
+<FONT ID="LN">358 </FONT><A NAME="358"></A>            }
+<FONT ID="LN">359 </FONT><A NAME="359"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'\n'</FONT>) {
+<FONT ID="LN">360 </FONT><A NAME="360"></A>                reportScannerError(<FONT ID="StringLiteral">"Unexpected end of line found in String"</FONT>);
+<FONT ID="LN">361 </FONT><A NAME="361"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == EOFCH) {
+<FONT ID="LN">362 </FONT><A NAME="362"></A>                reportScannerError(<FONT ID="StringLiteral">"Unexpected end of file found in String"</FONT>);
+<FONT ID="LN">363 </FONT><A NAME="363"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">364 </FONT><A NAME="364"></A>                <FONT ID="SingleLineComment">// Scan the closing "
+<FONT ID="LN">365 </FONT><A NAME="365"></A></FONT>                nextCh();
+<FONT ID="LN">366 </FONT><A NAME="366"></A>                buffer.append(<FONT ID="StringLiteral">"\""</FONT>);
+<FONT ID="LN">367 </FONT><A NAME="367"></A>            }
+<FONT ID="LN">368 </FONT><A NAME="368"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(STRING_LITERAL, buffer.toString(), line);
+<FONT ID="LN">369 </FONT><A NAME="369"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'.'</FONT>:
+<FONT ID="LN">370 </FONT><A NAME="370"></A>            nextCh();
+<FONT ID="LN">371 </FONT><A NAME="371"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(DOT, line);
+<FONT ID="LN">372 </FONT><A NAME="372"></A>        <FONT ID="Case">case</FONT> EOFCH:
+<FONT ID="LN">373 </FONT><A NAME="373"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(EOF, line);
+<FONT ID="LN">374 </FONT><A NAME="374"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'0'</FONT>:
+<FONT ID="LN">375 </FONT><A NAME="375"></A>            <FONT ID="SingleLineComment">// Handle only simple decimal integers for now.
+<FONT ID="LN">376 </FONT><A NAME="376"></A></FONT>            nextCh();
+<FONT ID="LN">377 </FONT><A NAME="377"></A>            <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(INT_LITERAL, <FONT ID="StringLiteral">"0"</FONT>, line);
+<FONT ID="LN">378 </FONT><A NAME="378"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'1'</FONT>:
+<FONT ID="LN">379 </FONT><A NAME="379"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'2'</FONT>:
+<FONT ID="LN">380 </FONT><A NAME="380"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'3'</FONT>:
+<FONT ID="LN">381 </FONT><A NAME="381"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'4'</FONT>:
+<FONT ID="LN">382 </FONT><A NAME="382"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'5'</FONT>:
+<FONT ID="LN">383 </FONT><A NAME="383"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'6'</FONT>:
+<FONT ID="LN">384 </FONT><A NAME="384"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'7'</FONT>:
+<FONT ID="LN">385 </FONT><A NAME="385"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'8'</FONT>:
+<FONT ID="LN">386 </FONT><A NAME="386"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'9'</FONT>:
+<FONT ID="LN">387 </FONT><A NAME="387"></A>            buffer = <FONT ID="New">new</FONT> StringBuffer();
+<FONT ID="LN">388 </FONT><A NAME="388"></A>            <FONT ID="While">while</FONT> (isDigit(ch)) {
+<FONT ID="LN">389 </FONT><A NAME="389"></A>                buffer.append(ch);
+<FONT ID="LN">390 </FONT><A NAME="390"></A>                nextCh();
+<FONT ID="LN">391 </FONT><A NAME="391"></A>            }
+<FONT ID="LN">392 </FONT><A NAME="392"></A>            <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'L'</FONT>) {
+<FONT ID="LN">393 </FONT><A NAME="393"></A>                nextCh();
+<FONT ID="LN">394 </FONT><A NAME="394"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(LONG_LITERAL, buffer.toString(), line);
+<FONT ID="LN">395 </FONT><A NAME="395"></A>            } <FONT ID="Else">else</FONT> <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'.'</FONT>) {
+<FONT ID="LN">396 </FONT><A NAME="396"></A>                buffer.append(<FONT ID="CharacerLiteral">'.'</FONT>);
+<FONT ID="LN">397 </FONT><A NAME="397"></A>                nextCh();
+<FONT ID="LN">398 </FONT><A NAME="398"></A>                <FONT ID="If">if</FONT> (!isDigit(ch)) {
+<FONT ID="LN">399 </FONT><A NAME="399"></A>                    reportScannerError(<FONT ID="StringLiteral">"Unexpected end of decimal."</FONT>);
+<FONT ID="LN">400 </FONT><A NAME="400"></A>                }
+<FONT ID="LN">401 </FONT><A NAME="401"></A>                <FONT ID="While">while</FONT>(isDigit(ch)) {
+<FONT ID="LN">402 </FONT><A NAME="402"></A>                    buffer.append(ch);
+<FONT ID="LN">403 </FONT><A NAME="403"></A>                    nextCh();
+<FONT ID="LN">404 </FONT><A NAME="404"></A>                }
+<FONT ID="LN">405 </FONT><A NAME="405"></A>                <FONT ID="If">if</FONT> (ch == <FONT ID="CharacerLiteral">'f'</FONT>) {
+<FONT ID="LN">406 </FONT><A NAME="406"></A>                    nextCh();
+<FONT ID="LN">407 </FONT><A NAME="407"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(FLOAT_LITERAL, buffer.toString(), line);
+<FONT ID="LN">408 </FONT><A NAME="408"></A>                } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">409 </FONT><A NAME="409"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(DOUBLE_LITERAL, buffer.toString(), line);
+<FONT ID="LN">410 </FONT><A NAME="410"></A>                }
+<FONT ID="LN">411 </FONT><A NAME="411"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">412 </FONT><A NAME="412"></A>                <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(INT_LITERAL, buffer.toString(), line);
+<FONT ID="LN">413 </FONT><A NAME="413"></A>            }
+<FONT ID="LN">414 </FONT><A NAME="414"></A>        <FONT ID="Default">default</FONT>:
+<FONT ID="LN">415 </FONT><A NAME="415"></A>            <FONT ID="If">if</FONT> (isIdentifierStart(ch)) {
+<FONT ID="LN">416 </FONT><A NAME="416"></A>                buffer = <FONT ID="New">new</FONT> StringBuffer();
+<FONT ID="LN">417 </FONT><A NAME="417"></A>                <FONT ID="While">while</FONT> (isIdentifierPart(ch)) {
+<FONT ID="LN">418 </FONT><A NAME="418"></A>                    buffer.append(ch);
+<FONT ID="LN">419 </FONT><A NAME="419"></A>                    nextCh();
+<FONT ID="LN">420 </FONT><A NAME="420"></A>                }
+<FONT ID="LN">421 </FONT><A NAME="421"></A>                String identifier = buffer.toString();
+<FONT ID="LN">422 </FONT><A NAME="422"></A>                <FONT ID="If">if</FONT> (reserved.containsKey(identifier)) {
+<FONT ID="LN">423 </FONT><A NAME="423"></A>                    TokenKind reservedKind = reserved.get(identifier);
+<FONT ID="LN">424 </FONT><A NAME="424"></A>                    <FONT ID="If">if</FONT> (reservedKind == TRUE || reservedKind == FALSE) {
+<FONT ID="LN">425 </FONT><A NAME="425"></A>                        <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(BOOLEAN_LITERAL, reservedKind.image(), line);
+<FONT ID="LN">426 </FONT><A NAME="426"></A>                    } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">427 </FONT><A NAME="427"></A>                        <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(reservedKind, line);
+<FONT ID="LN">428 </FONT><A NAME="428"></A>                    }
+<FONT ID="LN">429 </FONT><A NAME="429"></A>                } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">430 </FONT><A NAME="430"></A>                    <FONT ID="Return">return</FONT> <FONT ID="New">new</FONT> <A HREF="../jminusminus/TokenInfo.java.html">TokenInfo</A>(IDENTIFIER, identifier, line);
+<FONT ID="LN">431 </FONT><A NAME="431"></A>                }
+<FONT ID="LN">432 </FONT><A NAME="432"></A>            } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">433 </FONT><A NAME="433"></A>                reportScannerError(<FONT ID="StringLiteral">"Unidentified input token: '%c'"</FONT>, ch);
+<FONT ID="LN">434 </FONT><A NAME="434"></A>                nextCh();
+<FONT ID="LN">435 </FONT><A NAME="435"></A>                <FONT ID="Return">return</FONT> getNextToken();
+<FONT ID="LN">436 </FONT><A NAME="436"></A>            }
+<FONT ID="LN">437 </FONT><A NAME="437"></A>        }
+<FONT ID="LN">438 </FONT><A NAME="438"></A>    }
+<FONT ID="LN">439 </FONT><A NAME="439"></A>
+<FONT ID="LN">440 </FONT><A NAME="440"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">441 </FONT><A NAME="441"></A>     * Scan and return an escaped character.
+<FONT ID="LN">442 </FONT><A NAME="442"></A>     * 
+<FONT ID="LN">443 </FONT><A NAME="443"></A>     * @return escaped character.
+<FONT ID="LN">444 </FONT><A NAME="444"></A>     */</FONT>
+<FONT ID="LN">445 </FONT><A NAME="445"></A>
+<FONT ID="LN">446 </FONT><A NAME="446"></A>    <FONT ID="Private">private</FONT> String escape() {
+<FONT ID="LN">447 </FONT><A NAME="447"></A>        <FONT ID="Switch">switch</FONT> (ch) {
+<FONT ID="LN">448 </FONT><A NAME="448"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'b'</FONT>:
+<FONT ID="LN">449 </FONT><A NAME="449"></A>            nextCh();
+<FONT ID="LN">450 </FONT><A NAME="450"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\b"</FONT>;
+<FONT ID="LN">451 </FONT><A NAME="451"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'t'</FONT>:
+<FONT ID="LN">452 </FONT><A NAME="452"></A>            nextCh();
+<FONT ID="LN">453 </FONT><A NAME="453"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\t"</FONT>;
+<FONT ID="LN">454 </FONT><A NAME="454"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'n'</FONT>:
+<FONT ID="LN">455 </FONT><A NAME="455"></A>            nextCh();
+<FONT ID="LN">456 </FONT><A NAME="456"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\n"</FONT>;
+<FONT ID="LN">457 </FONT><A NAME="457"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'f'</FONT>:
+<FONT ID="LN">458 </FONT><A NAME="458"></A>            nextCh();
+<FONT ID="LN">459 </FONT><A NAME="459"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\f"</FONT>;
+<FONT ID="LN">460 </FONT><A NAME="460"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'r'</FONT>:
 <FONT ID="LN">461 </FONT><A NAME="461"></A>            nextCh();
-<FONT ID="LN">462 </FONT><A NAME="462"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\b"</FONT>;
-<FONT ID="LN">463 </FONT><A NAME="463"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'t'</FONT>:
+<FONT ID="LN">462 </FONT><A NAME="462"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\r"</FONT>;
+<FONT ID="LN">463 </FONT><A NAME="463"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'"'</FONT>:
 <FONT ID="LN">464 </FONT><A NAME="464"></A>            nextCh();
-<FONT ID="LN">465 </FONT><A NAME="465"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\t"</FONT>;
-<FONT ID="LN">466 </FONT><A NAME="466"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'n'</FONT>:
+<FONT ID="LN">465 </FONT><A NAME="465"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\""</FONT>;
+<FONT ID="LN">466 </FONT><A NAME="466"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\''</FONT>:
 <FONT ID="LN">467 </FONT><A NAME="467"></A>            nextCh();
-<FONT ID="LN">468 </FONT><A NAME="468"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\n"</FONT>;
-<FONT ID="LN">469 </FONT><A NAME="469"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'f'</FONT>:
+<FONT ID="LN">468 </FONT><A NAME="468"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\'"</FONT>;
+<FONT ID="LN">469 </FONT><A NAME="469"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\\'</FONT>:
 <FONT ID="LN">470 </FONT><A NAME="470"></A>            nextCh();
-<FONT ID="LN">471 </FONT><A NAME="471"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\f"</FONT>;
-<FONT ID="LN">472 </FONT><A NAME="472"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'r'</FONT>:
-<FONT ID="LN">473 </FONT><A NAME="473"></A>            nextCh();
-<FONT ID="LN">474 </FONT><A NAME="474"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\r"</FONT>;
-<FONT ID="LN">475 </FONT><A NAME="475"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'"'</FONT>:
-<FONT ID="LN">476 </FONT><A NAME="476"></A>            nextCh();
-<FONT ID="LN">477 </FONT><A NAME="477"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\""</FONT>;
-<FONT ID="LN">478 </FONT><A NAME="478"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\''</FONT>:
-<FONT ID="LN">479 </FONT><A NAME="479"></A>            nextCh();
-<FONT ID="LN">480 </FONT><A NAME="480"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\'"</FONT>;
-<FONT ID="LN">481 </FONT><A NAME="481"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\\'</FONT>:
-<FONT ID="LN">482 </FONT><A NAME="482"></A>            nextCh();
-<FONT ID="LN">483 </FONT><A NAME="483"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\\\"</FONT>;
-<FONT ID="LN">484 </FONT><A NAME="484"></A>        <FONT ID="Default">default</FONT>:
-<FONT ID="LN">485 </FONT><A NAME="485"></A>            reportScannerError(<FONT ID="StringLiteral">"Badly formed escape: \\%c"</FONT>, ch);
-<FONT ID="LN">486 </FONT><A NAME="486"></A>            nextCh();
-<FONT ID="LN">487 </FONT><A NAME="487"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">""</FONT>;
-<FONT ID="LN">488 </FONT><A NAME="488"></A>        }
-<FONT ID="LN">489 </FONT><A NAME="489"></A>    }
-<FONT ID="LN">490 </FONT><A NAME="490"></A>
-<FONT ID="LN">491 </FONT><A NAME="491"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">492 </FONT><A NAME="492"></A>     * Advance ch to the next character from input, and update the line number.
-<FONT ID="LN">493 </FONT><A NAME="493"></A>     */</FONT>
-<FONT ID="LN">494 </FONT><A NAME="494"></A>
-<FONT ID="LN">495 </FONT><A NAME="495"></A>    <FONT ID="Private">private</FONT> <FONT ID="Void">void</FONT> nextCh() {
-<FONT ID="LN">496 </FONT><A NAME="496"></A>        line = input.line();
-<FONT ID="LN">497 </FONT><A NAME="497"></A>        <FONT ID="Try">try</FONT> {
-<FONT ID="LN">498 </FONT><A NAME="498"></A>            ch = input.nextChar();
-<FONT ID="LN">499 </FONT><A NAME="499"></A>        } <FONT ID="Catch">catch</FONT> (Exception e) {
-<FONT ID="LN">500 </FONT><A NAME="500"></A>            reportScannerError(<FONT ID="StringLiteral">"Unable to read characters from input"</FONT>);
-<FONT ID="LN">501 </FONT><A NAME="501"></A>        }
-<FONT ID="LN">502 </FONT><A NAME="502"></A>    }
-<FONT ID="LN">503 </FONT><A NAME="503"></A>
-<FONT ID="LN">504 </FONT><A NAME="504"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">505 </FONT><A NAME="505"></A>     * Report a lexcial error and record the fact that an error has occured.
-<FONT ID="LN">506 </FONT><A NAME="506"></A>     * This fact can be ascertained from the Scanner by sending it an
-<FONT ID="LN">507 </FONT><A NAME="507"></A>     * errorHasOccurred() message.
-<FONT ID="LN">508 </FONT><A NAME="508"></A>     * 
-<FONT ID="LN">509 </FONT><A NAME="509"></A>     * @param message
-<FONT ID="LN">510 </FONT><A NAME="510"></A>     *            message identifying the error.
-<FONT ID="LN">511 </FONT><A NAME="511"></A>     * @param args
-<FONT ID="LN">512 </FONT><A NAME="512"></A>     *            related values.
-<FONT ID="LN">513 </FONT><A NAME="513"></A>     */</FONT>
-<FONT ID="LN">514 </FONT><A NAME="514"></A>
-<FONT ID="LN">515 </FONT><A NAME="515"></A>    <FONT ID="Private">private</FONT> <FONT ID="Void">void</FONT> reportScannerError(String message, Object... args) {
-<FONT ID="LN">516 </FONT><A NAME="516"></A>        isInError = <FONT ID="True">true</FONT>;
-<FONT ID="LN">517 </FONT><A NAME="517"></A>        System.err.printf(<FONT ID="StringLiteral">"%s:%d: "</FONT>, fileName, line);
-<FONT ID="LN">518 </FONT><A NAME="518"></A>        System.err.printf(message, args);
-<FONT ID="LN">519 </FONT><A NAME="519"></A>        System.err.println();
+<FONT ID="LN">471 </FONT><A NAME="471"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">"\\\\"</FONT>;
+<FONT ID="LN">472 </FONT><A NAME="472"></A>        <FONT ID="Default">default</FONT>:
+<FONT ID="LN">473 </FONT><A NAME="473"></A>            reportScannerError(<FONT ID="StringLiteral">"Badly formed escape: \\%c"</FONT>, ch);
+<FONT ID="LN">474 </FONT><A NAME="474"></A>            nextCh();
+<FONT ID="LN">475 </FONT><A NAME="475"></A>            <FONT ID="Return">return</FONT> <FONT ID="StringLiteral">""</FONT>;
+<FONT ID="LN">476 </FONT><A NAME="476"></A>        }
+<FONT ID="LN">477 </FONT><A NAME="477"></A>    }
+<FONT ID="LN">478 </FONT><A NAME="478"></A>
+<FONT ID="LN">479 </FONT><A NAME="479"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">480 </FONT><A NAME="480"></A>     * Advance ch to the next character from input, and update the line number.
+<FONT ID="LN">481 </FONT><A NAME="481"></A>     */</FONT>
+<FONT ID="LN">482 </FONT><A NAME="482"></A>
+<FONT ID="LN">483 </FONT><A NAME="483"></A>    <FONT ID="Private">private</FONT> <FONT ID="Void">void</FONT> nextCh() {
+<FONT ID="LN">484 </FONT><A NAME="484"></A>        line = input.line();
+<FONT ID="LN">485 </FONT><A NAME="485"></A>        <FONT ID="Try">try</FONT> {
+<FONT ID="LN">486 </FONT><A NAME="486"></A>            ch = input.nextChar();
+<FONT ID="LN">487 </FONT><A NAME="487"></A>        } <FONT ID="Catch">catch</FONT> (Exception e) {
+<FONT ID="LN">488 </FONT><A NAME="488"></A>            reportScannerError(<FONT ID="StringLiteral">"Unable to read characters from input"</FONT>);
+<FONT ID="LN">489 </FONT><A NAME="489"></A>        }
+<FONT ID="LN">490 </FONT><A NAME="490"></A>    }
+<FONT ID="LN">491 </FONT><A NAME="491"></A>
+<FONT ID="LN">492 </FONT><A NAME="492"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">493 </FONT><A NAME="493"></A>     * Report a lexcial error and record the fact that an error has occured.
+<FONT ID="LN">494 </FONT><A NAME="494"></A>     * This fact can be ascertained from the Scanner by sending it an
+<FONT ID="LN">495 </FONT><A NAME="495"></A>     * errorHasOccurred() message.
+<FONT ID="LN">496 </FONT><A NAME="496"></A>     * 
+<FONT ID="LN">497 </FONT><A NAME="497"></A>     * @param message
+<FONT ID="LN">498 </FONT><A NAME="498"></A>     *            message identifying the error.
+<FONT ID="LN">499 </FONT><A NAME="499"></A>     * @param args
+<FONT ID="LN">500 </FONT><A NAME="500"></A>     *            related values.
+<FONT ID="LN">501 </FONT><A NAME="501"></A>     */</FONT>
+<FONT ID="LN">502 </FONT><A NAME="502"></A>
+<FONT ID="LN">503 </FONT><A NAME="503"></A>    <FONT ID="Private">private</FONT> <FONT ID="Void">void</FONT> reportScannerError(String message, Object... args) {
+<FONT ID="LN">504 </FONT><A NAME="504"></A>        isInError = <FONT ID="True">true</FONT>;
+<FONT ID="LN">505 </FONT><A NAME="505"></A>        System.err.printf(<FONT ID="StringLiteral">"%s:%d: "</FONT>, fileName, line);
+<FONT ID="LN">506 </FONT><A NAME="506"></A>        System.err.printf(message, args);
+<FONT ID="LN">507 </FONT><A NAME="507"></A>        System.err.println();
+<FONT ID="LN">508 </FONT><A NAME="508"></A>    }
+<FONT ID="LN">509 </FONT><A NAME="509"></A>
+<FONT ID="LN">510 </FONT><A NAME="510"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">511 </FONT><A NAME="511"></A>     * Return true if the specified character is a digit (0-9); false otherwise.
+<FONT ID="LN">512 </FONT><A NAME="512"></A>     * 
+<FONT ID="LN">513 </FONT><A NAME="513"></A>     * @param c
+<FONT ID="LN">514 </FONT><A NAME="514"></A>     *            character.
+<FONT ID="LN">515 </FONT><A NAME="515"></A>     * @return true or false.
+<FONT ID="LN">516 </FONT><A NAME="516"></A>     */</FONT>
+<FONT ID="LN">517 </FONT><A NAME="517"></A>
+<FONT ID="LN">518 </FONT><A NAME="518"></A>    <FONT ID="Private">private</FONT> <FONT ID="Boolean">boolean</FONT> isDigit(<FONT ID="Char">char</FONT> c) {
+<FONT ID="LN">519 </FONT><A NAME="519"></A>        <FONT ID="Return">return</FONT> (c &gt;= <FONT ID="CharacerLiteral">'0'</FONT> &amp;&amp; c &lt;= <FONT ID="CharacerLiteral">'9'</FONT>);
 <FONT ID="LN">520 </FONT><A NAME="520"></A>    }
 <FONT ID="LN">521 </FONT><A NAME="521"></A>
 <FONT ID="LN">522 </FONT><A NAME="522"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">523 </FONT><A NAME="523"></A>     * Return true if the specified character is a digit (0-9); false otherwise.
+<FONT ID="LN">523 </FONT><A NAME="523"></A>     * Return true if the specified character is a whitespace; false otherwise.
 <FONT ID="LN">524 </FONT><A NAME="524"></A>     * 
 <FONT ID="LN">525 </FONT><A NAME="525"></A>     * @param c
 <FONT ID="LN">526 </FONT><A NAME="526"></A>     *            character.
 <FONT ID="LN">527 </FONT><A NAME="527"></A>     * @return true or false.
 <FONT ID="LN">528 </FONT><A NAME="528"></A>     */</FONT>
 <FONT ID="LN">529 </FONT><A NAME="529"></A>
-<FONT ID="LN">530 </FONT><A NAME="530"></A>    <FONT ID="Private">private</FONT> <FONT ID="Boolean">boolean</FONT> isDigit(<FONT ID="Char">char</FONT> c) {
-<FONT ID="LN">531 </FONT><A NAME="531"></A>        <FONT ID="Return">return</FONT> (c &gt;= <FONT ID="CharacerLiteral">'0'</FONT> &amp;&amp; c &lt;= <FONT ID="CharacerLiteral">'9'</FONT>);
-<FONT ID="LN">532 </FONT><A NAME="532"></A>    }
-<FONT ID="LN">533 </FONT><A NAME="533"></A>
-<FONT ID="LN">534 </FONT><A NAME="534"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">535 </FONT><A NAME="535"></A>     * Return true if the specified character is a whitespace; false otherwise.
-<FONT ID="LN">536 </FONT><A NAME="536"></A>     * 
-<FONT ID="LN">537 </FONT><A NAME="537"></A>     * @param c
-<FONT ID="LN">538 </FONT><A NAME="538"></A>     *            character.
-<FONT ID="LN">539 </FONT><A NAME="539"></A>     * @return true or false.
-<FONT ID="LN">540 </FONT><A NAME="540"></A>     */</FONT>
-<FONT ID="LN">541 </FONT><A NAME="541"></A>
-<FONT ID="LN">542 </FONT><A NAME="542"></A>    <FONT ID="Private">private</FONT> <FONT ID="Boolean">boolean</FONT> isWhitespace(<FONT ID="Char">char</FONT> c) {
-<FONT ID="LN">543 </FONT><A NAME="543"></A>        <FONT ID="Switch">switch</FONT> (c) {
-<FONT ID="LN">544 </FONT><A NAME="544"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">' '</FONT>:
-<FONT ID="LN">545 </FONT><A NAME="545"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\t'</FONT>:
-<FONT ID="LN">546 </FONT><A NAME="546"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\n'</FONT>: <FONT ID="SingleLineComment">// CharReader maps all new lines to '\n'
-<FONT ID="LN">547 </FONT><A NAME="547"></A></FONT>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\f'</FONT>:
-<FONT ID="LN">548 </FONT><A NAME="548"></A>            <FONT ID="Return">return</FONT> <FONT ID="True">true</FONT>;
-<FONT ID="LN">549 </FONT><A NAME="549"></A>        }
-<FONT ID="LN">550 </FONT><A NAME="550"></A>        <FONT ID="Return">return</FONT> <FONT ID="False">false</FONT>;
-<FONT ID="LN">551 </FONT><A NAME="551"></A>    }
-<FONT ID="LN">552 </FONT><A NAME="552"></A>
-<FONT ID="LN">553 </FONT><A NAME="553"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">554 </FONT><A NAME="554"></A>     * Return true if the specified character can start an identifier name;
-<FONT ID="LN">555 </FONT><A NAME="555"></A>     * false otherwise.
-<FONT ID="LN">556 </FONT><A NAME="556"></A>     * 
-<FONT ID="LN">557 </FONT><A NAME="557"></A>     * @param c
-<FONT ID="LN">558 </FONT><A NAME="558"></A>     *            character.
-<FONT ID="LN">559 </FONT><A NAME="559"></A>     * @return true or false.
-<FONT ID="LN">560 </FONT><A NAME="560"></A>     */</FONT>
-<FONT ID="LN">561 </FONT><A NAME="561"></A>
-<FONT ID="LN">562 </FONT><A NAME="562"></A>    <FONT ID="Private">private</FONT> <FONT ID="Boolean">boolean</FONT> isIdentifierStart(<FONT ID="Char">char</FONT> c) {
-<FONT ID="LN">563 </FONT><A NAME="563"></A>        <FONT ID="Return">return</FONT> (c &gt;= <FONT ID="CharacerLiteral">'a'</FONT> &amp;&amp; c &lt;= <FONT ID="CharacerLiteral">'z'</FONT> || c &gt;= <FONT ID="CharacerLiteral">'A'</FONT> &amp;&amp; c &lt;= <FONT ID="CharacerLiteral">'Z'</FONT> || c == <FONT ID="CharacerLiteral">'_'</FONT> || c == <FONT ID="CharacerLiteral">'$'</FONT>);
-<FONT ID="LN">564 </FONT><A NAME="564"></A>    }
-<FONT ID="LN">565 </FONT><A NAME="565"></A>
-<FONT ID="LN">566 </FONT><A NAME="566"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">567 </FONT><A NAME="567"></A>     * Return true if the specified character can be part of an identifier name;
-<FONT ID="LN">568 </FONT><A NAME="568"></A>     * false otherwise.
+<FONT ID="LN">530 </FONT><A NAME="530"></A>    <FONT ID="Private">private</FONT> <FONT ID="Boolean">boolean</FONT> isWhitespace(<FONT ID="Char">char</FONT> c) {
+<FONT ID="LN">531 </FONT><A NAME="531"></A>        <FONT ID="Switch">switch</FONT> (c) {
+<FONT ID="LN">532 </FONT><A NAME="532"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">' '</FONT>:
+<FONT ID="LN">533 </FONT><A NAME="533"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\t'</FONT>:
+<FONT ID="LN">534 </FONT><A NAME="534"></A>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\n'</FONT>: <FONT ID="SingleLineComment">// CharReader maps all new lines to '\n'
+<FONT ID="LN">535 </FONT><A NAME="535"></A></FONT>        <FONT ID="Case">case</FONT> <FONT ID="CharacerLiteral">'\f'</FONT>:
+<FONT ID="LN">536 </FONT><A NAME="536"></A>            <FONT ID="Return">return</FONT> <FONT ID="True">true</FONT>;
+<FONT ID="LN">537 </FONT><A NAME="537"></A>        }
+<FONT ID="LN">538 </FONT><A NAME="538"></A>        <FONT ID="Return">return</FONT> <FONT ID="False">false</FONT>;
+<FONT ID="LN">539 </FONT><A NAME="539"></A>    }
+<FONT ID="LN">540 </FONT><A NAME="540"></A>
+<FONT ID="LN">541 </FONT><A NAME="541"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">542 </FONT><A NAME="542"></A>     * Return true if the specified character can start an identifier name;
+<FONT ID="LN">543 </FONT><A NAME="543"></A>     * false otherwise.
+<FONT ID="LN">544 </FONT><A NAME="544"></A>     * 
+<FONT ID="LN">545 </FONT><A NAME="545"></A>     * @param c
+<FONT ID="LN">546 </FONT><A NAME="546"></A>     *            character.
+<FONT ID="LN">547 </FONT><A NAME="547"></A>     * @return true or false.
+<FONT ID="LN">548 </FONT><A NAME="548"></A>     */</FONT>
+<FONT ID="LN">549 </FONT><A NAME="549"></A>
+<FONT ID="LN">550 </FONT><A NAME="550"></A>    <FONT ID="Private">private</FONT> <FONT ID="Boolean">boolean</FONT> isIdentifierStart(<FONT ID="Char">char</FONT> c) {
+<FONT ID="LN">551 </FONT><A NAME="551"></A>        <FONT ID="Return">return</FONT> (c &gt;= <FONT ID="CharacerLiteral">'a'</FONT> &amp;&amp; c &lt;= <FONT ID="CharacerLiteral">'z'</FONT> || c &gt;= <FONT ID="CharacerLiteral">'A'</FONT> &amp;&amp; c &lt;= <FONT ID="CharacerLiteral">'Z'</FONT> || c == <FONT ID="CharacerLiteral">'_'</FONT> || c == <FONT ID="CharacerLiteral">'$'</FONT>);
+<FONT ID="LN">552 </FONT><A NAME="552"></A>    }
+<FONT ID="LN">553 </FONT><A NAME="553"></A>
+<FONT ID="LN">554 </FONT><A NAME="554"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">555 </FONT><A NAME="555"></A>     * Return true if the specified character can be part of an identifier name;
+<FONT ID="LN">556 </FONT><A NAME="556"></A>     * false otherwise.
+<FONT ID="LN">557 </FONT><A NAME="557"></A>     * 
+<FONT ID="LN">558 </FONT><A NAME="558"></A>     * @param c
+<FONT ID="LN">559 </FONT><A NAME="559"></A>     *            character.
+<FONT ID="LN">560 </FONT><A NAME="560"></A>     * @return true or false.
+<FONT ID="LN">561 </FONT><A NAME="561"></A>     */</FONT>
+<FONT ID="LN">562 </FONT><A NAME="562"></A>
+<FONT ID="LN">563 </FONT><A NAME="563"></A>    <FONT ID="Private">private</FONT> <FONT ID="Boolean">boolean</FONT> isIdentifierPart(<FONT ID="Char">char</FONT> c) {
+<FONT ID="LN">564 </FONT><A NAME="564"></A>        <FONT ID="Return">return</FONT> (isIdentifierStart(c) || isDigit(c));
+<FONT ID="LN">565 </FONT><A NAME="565"></A>    }
+<FONT ID="LN">566 </FONT><A NAME="566"></A>
+<FONT ID="LN">567 </FONT><A NAME="567"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">568 </FONT><A NAME="568"></A>     * Has an error occurred up to now in lexical analysis?
 <FONT ID="LN">569 </FONT><A NAME="569"></A>     * 
-<FONT ID="LN">570 </FONT><A NAME="570"></A>     * @param c
-<FONT ID="LN">571 </FONT><A NAME="571"></A>     *            character.
-<FONT ID="LN">572 </FONT><A NAME="572"></A>     * @return true or false.
-<FONT ID="LN">573 </FONT><A NAME="573"></A>     */</FONT>
-<FONT ID="LN">574 </FONT><A NAME="574"></A>
-<FONT ID="LN">575 </FONT><A NAME="575"></A>    <FONT ID="Private">private</FONT> <FONT ID="Boolean">boolean</FONT> isIdentifierPart(<FONT ID="Char">char</FONT> c) {
-<FONT ID="LN">576 </FONT><A NAME="576"></A>        <FONT ID="Return">return</FONT> (isIdentifierStart(c) || isDigit(c));
-<FONT ID="LN">577 </FONT><A NAME="577"></A>    }
-<FONT ID="LN">578 </FONT><A NAME="578"></A>
-<FONT ID="LN">579 </FONT><A NAME="579"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">580 </FONT><A NAME="580"></A>     * Has an error occurred up to now in lexical analysis?
-<FONT ID="LN">581 </FONT><A NAME="581"></A>     * 
-<FONT ID="LN">582 </FONT><A NAME="582"></A>     * @return true or false.
-<FONT ID="LN">583 </FONT><A NAME="583"></A>     */</FONT>
-<FONT ID="LN">584 </FONT><A NAME="584"></A>
-<FONT ID="LN">585 </FONT><A NAME="585"></A>    <FONT ID="Public">public</FONT> <FONT ID="Boolean">boolean</FONT> errorHasOccurred() {
-<FONT ID="LN">586 </FONT><A NAME="586"></A>        <FONT ID="Return">return</FONT> isInError;
-<FONT ID="LN">587 </FONT><A NAME="587"></A>    }
+<FONT ID="LN">570 </FONT><A NAME="570"></A>     * @return true or false.
+<FONT ID="LN">571 </FONT><A NAME="571"></A>     */</FONT>
+<FONT ID="LN">572 </FONT><A NAME="572"></A>
+<FONT ID="LN">573 </FONT><A NAME="573"></A>    <FONT ID="Public">public</FONT> <FONT ID="Boolean">boolean</FONT> errorHasOccurred() {
+<FONT ID="LN">574 </FONT><A NAME="574"></A>        <FONT ID="Return">return</FONT> isInError;
+<FONT ID="LN">575 </FONT><A NAME="575"></A>    }
+<FONT ID="LN">576 </FONT><A NAME="576"></A>
+<FONT ID="LN">577 </FONT><A NAME="577"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">578 </FONT><A NAME="578"></A>     * The name of the source file.
+<FONT ID="LN">579 </FONT><A NAME="579"></A>     * 
+<FONT ID="LN">580 </FONT><A NAME="580"></A>     * @return name of the source file.
+<FONT ID="LN">581 </FONT><A NAME="581"></A>     */</FONT>
+<FONT ID="LN">582 </FONT><A NAME="582"></A>
+<FONT ID="LN">583 </FONT><A NAME="583"></A>    <FONT ID="Public">public</FONT> String fileName() {
+<FONT ID="LN">584 </FONT><A NAME="584"></A>        <FONT ID="Return">return</FONT> fileName;
+<FONT ID="LN">585 </FONT><A NAME="585"></A>    }
+<FONT ID="LN">586 </FONT><A NAME="586"></A>
+<FONT ID="LN">587 </FONT><A NAME="587"></A>}
 <FONT ID="LN">588 </FONT><A NAME="588"></A>
-<FONT ID="LN">589 </FONT><A NAME="589"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">590 </FONT><A NAME="590"></A>     * The name of the source file.
-<FONT ID="LN">591 </FONT><A NAME="591"></A>     * 
-<FONT ID="LN">592 </FONT><A NAME="592"></A>     * @return name of the source file.
-<FONT ID="LN">593 </FONT><A NAME="593"></A>     */</FONT>
+<FONT ID="LN">589 </FONT><A NAME="589"></A><FONT ID="FormalComment">/**
+<FONT ID="LN">590 </FONT><A NAME="590"></A> * A buffered character reader. Abstracts out differences between platforms,
+<FONT ID="LN">591 </FONT><A NAME="591"></A> * mapping all new lines to '\n'. Also, keeps track of line numbers where the
+<FONT ID="LN">592 </FONT><A NAME="592"></A> * first line is numbered 1.
+<FONT ID="LN">593 </FONT><A NAME="593"></A> */</FONT>
 <FONT ID="LN">594 </FONT><A NAME="594"></A>
-<FONT ID="LN">595 </FONT><A NAME="595"></A>    <FONT ID="Public">public</FONT> String fileName() {
-<FONT ID="LN">596 </FONT><A NAME="596"></A>        <FONT ID="Return">return</FONT> fileName;
-<FONT ID="LN">597 </FONT><A NAME="597"></A>    }
-<FONT ID="LN">598 </FONT><A NAME="598"></A>
-<FONT ID="LN">599 </FONT><A NAME="599"></A>}
-<FONT ID="LN">600 </FONT><A NAME="600"></A>
-<FONT ID="LN">601 </FONT><A NAME="601"></A><FONT ID="FormalComment">/**
-<FONT ID="LN">602 </FONT><A NAME="602"></A> * A buffered character reader. Abstracts out differences between platforms,
-<FONT ID="LN">603 </FONT><A NAME="603"></A> * mapping all new lines to '\n'. Also, keeps track of line numbers where the
-<FONT ID="LN">604 </FONT><A NAME="604"></A> * first line is numbered 1.
-<FONT ID="LN">605 </FONT><A NAME="605"></A> */</FONT>
-<FONT ID="LN">606 </FONT><A NAME="606"></A>
-<FONT ID="LN">607 </FONT><A NAME="607"></A><FONT ID="Class">class</FONT> CharReader {
-<FONT ID="LN">608 </FONT><A NAME="608"></A>
-<FONT ID="LN">609 </FONT><A NAME="609"></A>    <FONT ID="FormalComment">/** A representation of the end of file as a character. */</FONT>
-<FONT ID="LN">610 </FONT><A NAME="610"></A>    <FONT ID="Public">public</FONT> <FONT ID="Final">final</FONT> <FONT ID="Static">static</FONT> <FONT ID="Char">char</FONT> EOFCH = (<FONT ID="Char">char</FONT>) -<FONT ID="IntegerLiteral">1</FONT>;
-<FONT ID="LN">611 </FONT><A NAME="611"></A>
-<FONT ID="LN">612 </FONT><A NAME="612"></A>    <FONT ID="FormalComment">/** The underlying reader records line numbers. */</FONT>
-<FONT ID="LN">613 </FONT><A NAME="613"></A>    <FONT ID="Private">private</FONT> LineNumberReader lineNumberReader;
+<FONT ID="LN">595 </FONT><A NAME="595"></A><FONT ID="Class">class</FONT> CharReader {
+<FONT ID="LN">596 </FONT><A NAME="596"></A>
+<FONT ID="LN">597 </FONT><A NAME="597"></A>    <FONT ID="FormalComment">/** A representation of the end of file as a character. */</FONT>
+<FONT ID="LN">598 </FONT><A NAME="598"></A>    <FONT ID="Public">public</FONT> <FONT ID="Final">final</FONT> <FONT ID="Static">static</FONT> <FONT ID="Char">char</FONT> EOFCH = (<FONT ID="Char">char</FONT>) -<FONT ID="IntegerLiteral">1</FONT>;
+<FONT ID="LN">599 </FONT><A NAME="599"></A>
+<FONT ID="LN">600 </FONT><A NAME="600"></A>    <FONT ID="FormalComment">/** The underlying reader records line numbers. */</FONT>
+<FONT ID="LN">601 </FONT><A NAME="601"></A>    <FONT ID="Private">private</FONT> LineNumberReader lineNumberReader;
+<FONT ID="LN">602 </FONT><A NAME="602"></A>
+<FONT ID="LN">603 </FONT><A NAME="603"></A>    <FONT ID="FormalComment">/** Name of the file that is being read. */</FONT>
+<FONT ID="LN">604 </FONT><A NAME="604"></A>    <FONT ID="Private">private</FONT> String fileName;
+<FONT ID="LN">605 </FONT><A NAME="605"></A>
+<FONT ID="LN">606 </FONT><A NAME="606"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">607 </FONT><A NAME="607"></A>     * Construct a CharReader from a file name.
+<FONT ID="LN">608 </FONT><A NAME="608"></A>     * 
+<FONT ID="LN">609 </FONT><A NAME="609"></A>     * @param fileName
+<FONT ID="LN">610 </FONT><A NAME="610"></A>     *            the name of the input file.
+<FONT ID="LN">611 </FONT><A NAME="611"></A>     * @exception FileNotFoundException
+<FONT ID="LN">612 </FONT><A NAME="612"></A>     *                if the file is not found.
+<FONT ID="LN">613 </FONT><A NAME="613"></A>     */</FONT>
 <FONT ID="LN">614 </FONT><A NAME="614"></A>
-<FONT ID="LN">615 </FONT><A NAME="615"></A>    <FONT ID="FormalComment">/** Name of the file that is being read. */</FONT>
-<FONT ID="LN">616 </FONT><A NAME="616"></A>    <FONT ID="Private">private</FONT> String fileName;
-<FONT ID="LN">617 </FONT><A NAME="617"></A>
-<FONT ID="LN">618 </FONT><A NAME="618"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">619 </FONT><A NAME="619"></A>     * Construct a CharReader from a file name.
-<FONT ID="LN">620 </FONT><A NAME="620"></A>     * 
-<FONT ID="LN">621 </FONT><A NAME="621"></A>     * @param fileName
-<FONT ID="LN">622 </FONT><A NAME="622"></A>     *            the name of the input file.
-<FONT ID="LN">623 </FONT><A NAME="623"></A>     * @exception FileNotFoundException
-<FONT ID="LN">624 </FONT><A NAME="624"></A>     *                if the file is not found.
-<FONT ID="LN">625 </FONT><A NAME="625"></A>     */</FONT>
-<FONT ID="LN">626 </FONT><A NAME="626"></A>
-<FONT ID="LN">627 </FONT><A NAME="627"></A>    <FONT ID="Public">public</FONT> CharReader(String fileName) <FONT ID="Throws">throws</FONT> FileNotFoundException {
-<FONT ID="LN">628 </FONT><A NAME="628"></A>        lineNumberReader = <FONT ID="New">new</FONT> LineNumberReader(<FONT ID="New">new</FONT> FileReader(fileName));
-<FONT ID="LN">629 </FONT><A NAME="629"></A>        <FONT ID="This">this</FONT>.fileName = fileName;
+<FONT ID="LN">615 </FONT><A NAME="615"></A>    <FONT ID="Public">public</FONT> CharReader(String fileName) <FONT ID="Throws">throws</FONT> FileNotFoundException {
+<FONT ID="LN">616 </FONT><A NAME="616"></A>        lineNumberReader = <FONT ID="New">new</FONT> LineNumberReader(<FONT ID="New">new</FONT> FileReader(fileName));
+<FONT ID="LN">617 </FONT><A NAME="617"></A>        <FONT ID="This">this</FONT>.fileName = fileName;
+<FONT ID="LN">618 </FONT><A NAME="618"></A>    }
+<FONT ID="LN">619 </FONT><A NAME="619"></A>
+<FONT ID="LN">620 </FONT><A NAME="620"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">621 </FONT><A NAME="621"></A>     * Scan the next character.
+<FONT ID="LN">622 </FONT><A NAME="622"></A>     * 
+<FONT ID="LN">623 </FONT><A NAME="623"></A>     * @return the character scanned.
+<FONT ID="LN">624 </FONT><A NAME="624"></A>     * @exception IOException
+<FONT ID="LN">625 </FONT><A NAME="625"></A>     *                if an I/O error occurs.
+<FONT ID="LN">626 </FONT><A NAME="626"></A>     */</FONT>
+<FONT ID="LN">627 </FONT><A NAME="627"></A>
+<FONT ID="LN">628 </FONT><A NAME="628"></A>    <FONT ID="Public">public</FONT> <FONT ID="Char">char</FONT> nextChar() <FONT ID="Throws">throws</FONT> IOException {
+<FONT ID="LN">629 </FONT><A NAME="629"></A>        <FONT ID="Return">return</FONT> (<FONT ID="Char">char</FONT>) lineNumberReader.read();
 <FONT ID="LN">630 </FONT><A NAME="630"></A>    }
 <FONT ID="LN">631 </FONT><A NAME="631"></A>
 <FONT ID="LN">632 </FONT><A NAME="632"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">633 </FONT><A NAME="633"></A>     * Scan the next character.
+<FONT ID="LN">633 </FONT><A NAME="633"></A>     * The current line number in the source file, starting at 1.
 <FONT ID="LN">634 </FONT><A NAME="634"></A>     * 
-<FONT ID="LN">635 </FONT><A NAME="635"></A>     * @return the character scanned.
-<FONT ID="LN">636 </FONT><A NAME="636"></A>     * @exception IOException
-<FONT ID="LN">637 </FONT><A NAME="637"></A>     *                if an I/O error occurs.
-<FONT ID="LN">638 </FONT><A NAME="638"></A>     */</FONT>
-<FONT ID="LN">639 </FONT><A NAME="639"></A>
-<FONT ID="LN">640 </FONT><A NAME="640"></A>    <FONT ID="Public">public</FONT> <FONT ID="Char">char</FONT> nextChar() <FONT ID="Throws">throws</FONT> IOException {
-<FONT ID="LN">641 </FONT><A NAME="641"></A>        <FONT ID="Return">return</FONT> (<FONT ID="Char">char</FONT>) lineNumberReader.read();
-<FONT ID="LN">642 </FONT><A NAME="642"></A>    }
-<FONT ID="LN">643 </FONT><A NAME="643"></A>
-<FONT ID="LN">644 </FONT><A NAME="644"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">645 </FONT><A NAME="645"></A>     * The current line number in the source file, starting at 1.
-<FONT ID="LN">646 </FONT><A NAME="646"></A>     * 
-<FONT ID="LN">647 </FONT><A NAME="647"></A>     * @return the current line number.
-<FONT ID="LN">648 </FONT><A NAME="648"></A>     */</FONT>
-<FONT ID="LN">649 </FONT><A NAME="649"></A>
-<FONT ID="LN">650 </FONT><A NAME="650"></A>    <FONT ID="Public">public</FONT> <FONT ID="Int">int</FONT> line() {
-<FONT ID="LN">651 </FONT><A NAME="651"></A>        <FONT ID="SingleLineComment">// LineNumberReader counts lines from 0.
-<FONT ID="LN">652 </FONT><A NAME="652"></A></FONT>        <FONT ID="Return">return</FONT> lineNumberReader.getLineNumber() + <FONT ID="IntegerLiteral">1</FONT>;
-<FONT ID="LN">653 </FONT><A NAME="653"></A>    }
-<FONT ID="LN">654 </FONT><A NAME="654"></A>
-<FONT ID="LN">655 </FONT><A NAME="655"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">656 </FONT><A NAME="656"></A>     * Return the file name.
-<FONT ID="LN">657 </FONT><A NAME="657"></A>     * 
-<FONT ID="LN">658 </FONT><A NAME="658"></A>     * @return the file name.
-<FONT ID="LN">659 </FONT><A NAME="659"></A>     */</FONT>
-<FONT ID="LN">660 </FONT><A NAME="660"></A>
-<FONT ID="LN">661 </FONT><A NAME="661"></A>    <FONT ID="Public">public</FONT> String fileName() { 
-<FONT ID="LN">662 </FONT><A NAME="662"></A>        <FONT ID="Return">return</FONT> fileName;
-<FONT ID="LN">663 </FONT><A NAME="663"></A>    }
-<FONT ID="LN">664 </FONT><A NAME="664"></A>
-<FONT ID="LN">665 </FONT><A NAME="665"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">666 </FONT><A NAME="666"></A>     * Close the file.
-<FONT ID="LN">667 </FONT><A NAME="667"></A>     * 
-<FONT ID="LN">668 </FONT><A NAME="668"></A>     * @exception IOException
-<FONT ID="LN">669 </FONT><A NAME="669"></A>     *                if an I/O error occurs.
-<FONT ID="LN">670 </FONT><A NAME="670"></A>     */</FONT>
-<FONT ID="LN">671 </FONT><A NAME="671"></A>
-<FONT ID="LN">672 </FONT><A NAME="672"></A>    <FONT ID="Public">public</FONT> <FONT ID="Void">void</FONT> close() <FONT ID="Throws">throws</FONT> IOException {
-<FONT ID="LN">673 </FONT><A NAME="673"></A>        lineNumberReader.close();
-<FONT ID="LN">674 </FONT><A NAME="674"></A>    }
-<FONT ID="LN">675 </FONT><A NAME="675"></A>
-<FONT ID="LN">676 </FONT><A NAME="676"></A>}
-<FONT ID="LN">677 </FONT><A NAME="677"></A></pre>
+<FONT ID="LN">635 </FONT><A NAME="635"></A>     * @return the current line number.
+<FONT ID="LN">636 </FONT><A NAME="636"></A>     */</FONT>
+<FONT ID="LN">637 </FONT><A NAME="637"></A>
+<FONT ID="LN">638 </FONT><A NAME="638"></A>    <FONT ID="Public">public</FONT> <FONT ID="Int">int</FONT> line() {
+<FONT ID="LN">639 </FONT><A NAME="639"></A>        <FONT ID="SingleLineComment">// LineNumberReader counts lines from 0.
+<FONT ID="LN">640 </FONT><A NAME="640"></A></FONT>        <FONT ID="Return">return</FONT> lineNumberReader.getLineNumber() + <FONT ID="IntegerLiteral">1</FONT>;
+<FONT ID="LN">641 </FONT><A NAME="641"></A>    }
+<FONT ID="LN">642 </FONT><A NAME="642"></A>
+<FONT ID="LN">643 </FONT><A NAME="643"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">644 </FONT><A NAME="644"></A>     * Return the file name.
+<FONT ID="LN">645 </FONT><A NAME="645"></A>     * 
+<FONT ID="LN">646 </FONT><A NAME="646"></A>     * @return the file name.
+<FONT ID="LN">647 </FONT><A NAME="647"></A>     */</FONT>
+<FONT ID="LN">648 </FONT><A NAME="648"></A>
+<FONT ID="LN">649 </FONT><A NAME="649"></A>    <FONT ID="Public">public</FONT> String fileName() { 
+<FONT ID="LN">650 </FONT><A NAME="650"></A>        <FONT ID="Return">return</FONT> fileName;
+<FONT ID="LN">651 </FONT><A NAME="651"></A>    }
+<FONT ID="LN">652 </FONT><A NAME="652"></A>
+<FONT ID="LN">653 </FONT><A NAME="653"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">654 </FONT><A NAME="654"></A>     * Close the file.
+<FONT ID="LN">655 </FONT><A NAME="655"></A>     * 
+<FONT ID="LN">656 </FONT><A NAME="656"></A>     * @exception IOException
+<FONT ID="LN">657 </FONT><A NAME="657"></A>     *                if an I/O error occurs.
+<FONT ID="LN">658 </FONT><A NAME="658"></A>     */</FONT>
+<FONT ID="LN">659 </FONT><A NAME="659"></A>
+<FONT ID="LN">660 </FONT><A NAME="660"></A>    <FONT ID="Public">public</FONT> <FONT ID="Void">void</FONT> close() <FONT ID="Throws">throws</FONT> IOException {
+<FONT ID="LN">661 </FONT><A NAME="661"></A>        lineNumberReader.close();
+<FONT ID="LN">662 </FONT><A NAME="662"></A>    }
+<FONT ID="LN">663 </FONT><A NAME="663"></A>
+<FONT ID="LN">664 </FONT><A NAME="664"></A>}
+<FONT ID="LN">665 </FONT><A NAME="665"></A></pre>
 </BODY>
 </HTML>

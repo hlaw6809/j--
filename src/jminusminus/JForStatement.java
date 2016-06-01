@@ -66,7 +66,7 @@ class JForStatement extends JStatement {
         String out = output.createLabel();
 
         // Codegen initializaton
-        this.initialization.codegen(output);
+        initialization.codegen(output);
 
         // Branch out of the loop on the test condition
         // being false

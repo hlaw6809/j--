@@ -64,7 +64,7 @@ class JMethodDeclaration
 
     public JMethodDeclaration(int line, ArrayList<String> mods,
         String name, Type returnType,
-        ArrayList<JFormalParameter> params, String throwsExc, JBlock body)
+        ArrayList<JFormalParameter> params, JBlock body)
 
     {
         super(line);

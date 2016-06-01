@@ -11,7 +11,7 @@ import static jminusminus.CLConstants.*;
 class JThrowStatement extends JStatement {
 
     /** The throw exception. */
-    private JExpression exception;
+    private String exception;
 
     /**
      * Construct an AST node for a catch-statement given its line number, the
@@ -25,7 +25,7 @@ class JThrowStatement extends JStatement {
      *            the body.
      */
 
-    public JThrowStatement(int line, JExpression exception) {
+    public JThrowStatement(int line, String exception) {
         super(line);
         this.exception = exception;
     }
@@ -40,7 +40,6 @@ class JThrowStatement extends JStatement {
      */
 
     public JThrowStatement analyze(Context context) {
-        exception = exception.analyze(context);
         return this;
     }
 
@@ -53,8 +52,6 @@ class JThrowStatement extends JStatement {
      */
 
     public void codegen(CLEmitter output) {
-        // Codegen exception
-        exception.codegen(output);
     }
 
     /**
@@ -66,7 +63,7 @@ class JThrowStatement extends JStatement {
         p.indentRight();
         p.printf("<Exception>\n");
         p.indentRight();
-        exception.writeToStdOut(p);
+        p.printf(exception);
         p.indentLeft();
         p.printf("</Exception>\n");
         p.indentLeft();

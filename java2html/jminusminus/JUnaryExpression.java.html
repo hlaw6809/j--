@@ -279,29 +279,29 @@
 <FONT ID="LN">262 </FONT><A NAME="262"></A>}
 <FONT ID="LN">263 </FONT><A NAME="263"></A>
 <FONT ID="LN">264 </FONT><A NAME="264"></A><FONT ID="FormalComment">/**
-<FONT ID="LN">265 </FONT><A NAME="265"></A> * The AST node for a ++expr expression.
+<FONT ID="LN">265 </FONT><A NAME="265"></A> * The AST node for an expr++.
 <FONT ID="LN">266 </FONT><A NAME="266"></A> */</FONT>
 <FONT ID="LN">267 </FONT><A NAME="267"></A>
-<FONT ID="LN">268 </FONT><A NAME="268"></A><FONT ID="Class">class</FONT> JPreIncrementOp <FONT ID="Extends">extends</FONT> <A HREF="../jminusminus/JUnaryExpression.java.html">JUnaryExpression</A> {
+<FONT ID="LN">268 </FONT><A NAME="268"></A><FONT ID="Class">class</FONT> JPostIncrementOp <FONT ID="Extends">extends</FONT> <A HREF="../jminusminus/JUnaryExpression.java.html">JUnaryExpression</A> {
 <FONT ID="LN">269 </FONT><A NAME="269"></A>
 <FONT ID="LN">270 </FONT><A NAME="270"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">271 </FONT><A NAME="271"></A>     * Construct an AST node for a ++expr given its line number, and the
-<FONT ID="LN">272 </FONT><A NAME="272"></A>     * operand.
-<FONT ID="LN">273 </FONT><A NAME="273"></A>     * 
+<FONT ID="LN">271 </FONT><A NAME="271"></A>     * Construct an AST node for an expr-- expression given its line number, and
+<FONT ID="LN">272 </FONT><A NAME="272"></A>     * the operand.
+<FONT ID="LN">273 </FONT><A NAME="273"></A>     *
 <FONT ID="LN">274 </FONT><A NAME="274"></A>     * @param line
 <FONT ID="LN">275 </FONT><A NAME="275"></A>     *            line in which the expression occurs in the source file.
 <FONT ID="LN">276 </FONT><A NAME="276"></A>     * @param arg
 <FONT ID="LN">277 </FONT><A NAME="277"></A>     *            the operand.
 <FONT ID="LN">278 </FONT><A NAME="278"></A>     */</FONT>
 <FONT ID="LN">279 </FONT><A NAME="279"></A>
-<FONT ID="LN">280 </FONT><A NAME="280"></A>    <FONT ID="Public">public</FONT> JPreIncrementOp(<FONT ID="Int">int</FONT> line, <A HREF="../jminusminus/JExpression.java.html">JExpression</A> arg) {
-<FONT ID="LN">281 </FONT><A NAME="281"></A>        <FONT ID="Super">super</FONT>(line, <FONT ID="StringLiteral">"++pre"</FONT>, arg);
+<FONT ID="LN">280 </FONT><A NAME="280"></A>    <FONT ID="Public">public</FONT> JPostIncrementOp(<FONT ID="Int">int</FONT> line, <A HREF="../jminusminus/JExpression.java.html">JExpression</A> arg) {
+<FONT ID="LN">281 </FONT><A NAME="281"></A>        <FONT ID="Super">super</FONT>(line, <FONT ID="StringLiteral">"post++"</FONT>, arg);
 <FONT ID="LN">282 </FONT><A NAME="282"></A>    }
 <FONT ID="LN">283 </FONT><A NAME="283"></A>
 <FONT ID="LN">284 </FONT><A NAME="284"></A>    <FONT ID="FormalComment">/**
 <FONT ID="LN">285 </FONT><A NAME="285"></A>     * Analyze the operand as a lhs (since there is a side effect), check types
 <FONT ID="LN">286 </FONT><A NAME="286"></A>     * and determine the type of the result.
-<FONT ID="LN">287 </FONT><A NAME="287"></A>     * 
+<FONT ID="LN">287 </FONT><A NAME="287"></A>     *
 <FONT ID="LN">288 </FONT><A NAME="288"></A>     * @param context
 <FONT ID="LN">289 </FONT><A NAME="289"></A>     *            context in which names are resolved.
 <FONT ID="LN">290 </FONT><A NAME="290"></A>     * @return the analyzed (and possibly rewritten) AST subtree.
@@ -310,7 +310,7 @@
 <FONT ID="LN">293 </FONT><A NAME="293"></A>    <FONT ID="Public">public</FONT> <A HREF="../jminusminus/JExpression.java.html">JExpression</A> analyze(<A HREF="../jminusminus/Context.java.html">Context</A> context) {
 <FONT ID="LN">294 </FONT><A NAME="294"></A>        <FONT ID="If">if</FONT> (!(arg <FONT ID="InstanceOf">instanceof</FONT> <A HREF="../jminusminus/JLhs.java.html">JLhs</A>)) {
 <FONT ID="LN">295 </FONT><A NAME="295"></A>            JAST.compilationUnit.reportSemanticError(line,
-<FONT ID="LN">296 </FONT><A NAME="296"></A>                    <FONT ID="StringLiteral">"Operand to ++expr must have an LValue."</FONT>);
+<FONT ID="LN">296 </FONT><A NAME="296"></A>                    <FONT ID="StringLiteral">"Operand to expr++ must have an LValue."</FONT>);
 <FONT ID="LN">297 </FONT><A NAME="297"></A>            type = Type.ANY;
 <FONT ID="LN">298 </FONT><A NAME="298"></A>        } <FONT ID="Else">else</FONT> {
 <FONT ID="LN">299 </FONT><A NAME="299"></A>            arg = (<A HREF="../jminusminus/JExpression.java.html">JExpression</A>) arg.analyze(context);
@@ -321,14 +321,14 @@
 <FONT ID="LN">304 </FONT><A NAME="304"></A>    }
 <FONT ID="LN">305 </FONT><A NAME="305"></A>
 <FONT ID="LN">306 </FONT><A NAME="306"></A>    <FONT ID="FormalComment">/**
-<FONT ID="LN">307 </FONT><A NAME="307"></A>     * In generating code for a pre-increment operation, we treat simple
+<FONT ID="LN">307 </FONT><A NAME="307"></A>     * In generating code for a post-decrement operation, we treat simple
 <FONT ID="LN">308 </FONT><A NAME="308"></A>     * variable (JVariable) operands specially since the JVM has an increment
 <FONT ID="LN">309 </FONT><A NAME="309"></A>     * instruction. Otherwise, we rely on the JLhs code generation support for
 <FONT ID="LN">310 </FONT><A NAME="310"></A>     * generating the proper code. Notice that we distinguish between
 <FONT ID="LN">311 </FONT><A NAME="311"></A>     * expressions that are statement expressions and those that are not; we
-<FONT ID="LN">312 </FONT><A NAME="312"></A>     * insure the proper value (after the increment) is left atop the stack in
+<FONT ID="LN">312 </FONT><A NAME="312"></A>     * insure the proper value (before the decrement) is left atop the stack in
 <FONT ID="LN">313 </FONT><A NAME="313"></A>     * the latter case.
-<FONT ID="LN">314 </FONT><A NAME="314"></A>     * 
+<FONT ID="LN">314 </FONT><A NAME="314"></A>     *
 <FONT ID="LN">315 </FONT><A NAME="315"></A>     * @param output
 <FONT ID="LN">316 </FONT><A NAME="316"></A>     *            the code emitter (basically an abstraction for producing the
 <FONT ID="LN">317 </FONT><A NAME="317"></A>     *            .class file).
@@ -340,25 +340,108 @@
 <FONT ID="LN">323 </FONT><A NAME="323"></A></FONT>            <FONT ID="SingleLineComment">// have replaced it with an explicit field selection.
 <FONT ID="LN">324 </FONT><A NAME="324"></A></FONT>            <FONT ID="Int">int</FONT> offset = ((LocalVariableDefn) ((<A HREF="../jminusminus/JVariable.java.html">JVariable</A>) arg).iDefn())
 <FONT ID="LN">325 </FONT><A NAME="325"></A>                    .offset();
-<FONT ID="LN">326 </FONT><A NAME="326"></A>            output.addIINCInstruction(offset, <FONT ID="IntegerLiteral">1</FONT>);
-<FONT ID="LN">327 </FONT><A NAME="327"></A>            <FONT ID="If">if</FONT> (!isStatementExpression) {
-<FONT ID="LN">328 </FONT><A NAME="328"></A>                <FONT ID="SingleLineComment">// Loading its original rvalue
-<FONT ID="LN">329 </FONT><A NAME="329"></A></FONT>                arg.codegen(output);
-<FONT ID="LN">330 </FONT><A NAME="330"></A>            }
+<FONT ID="LN">326 </FONT><A NAME="326"></A>            <FONT ID="If">if</FONT> (!isStatementExpression) {
+<FONT ID="LN">327 </FONT><A NAME="327"></A>                <FONT ID="SingleLineComment">// Loading its original rvalue
+<FONT ID="LN">328 </FONT><A NAME="328"></A></FONT>                arg.codegen(output);
+<FONT ID="LN">329 </FONT><A NAME="329"></A>            }
+<FONT ID="LN">330 </FONT><A NAME="330"></A>            output.addIINCInstruction(offset, -<FONT ID="IntegerLiteral">1</FONT>);
 <FONT ID="LN">331 </FONT><A NAME="331"></A>        } <FONT ID="Else">else</FONT> {
 <FONT ID="LN">332 </FONT><A NAME="332"></A>            ((<A HREF="../jminusminus/JLhs.java.html">JLhs</A>) arg).codegenLoadLhsLvalue(output);
 <FONT ID="LN">333 </FONT><A NAME="333"></A>            ((<A HREF="../jminusminus/JLhs.java.html">JLhs</A>) arg).codegenLoadLhsRvalue(output);
-<FONT ID="LN">334 </FONT><A NAME="334"></A>            output.addNoArgInstruction(ICONST_1);
-<FONT ID="LN">335 </FONT><A NAME="335"></A>            output.addNoArgInstruction(IADD);
-<FONT ID="LN">336 </FONT><A NAME="336"></A>            <FONT ID="If">if</FONT> (!isStatementExpression) {
-<FONT ID="LN">337 </FONT><A NAME="337"></A>                <FONT ID="SingleLineComment">// Loading its original rvalue
-<FONT ID="LN">338 </FONT><A NAME="338"></A></FONT>                ((<A HREF="../jminusminus/JLhs.java.html">JLhs</A>) arg).codegenDuplicateRvalue(output);
-<FONT ID="LN">339 </FONT><A NAME="339"></A>            }
+<FONT ID="LN">334 </FONT><A NAME="334"></A>            <FONT ID="If">if</FONT> (!isStatementExpression) {
+<FONT ID="LN">335 </FONT><A NAME="335"></A>                <FONT ID="SingleLineComment">// Loading its original rvalue
+<FONT ID="LN">336 </FONT><A NAME="336"></A></FONT>                ((<A HREF="../jminusminus/JLhs.java.html">JLhs</A>) arg).codegenDuplicateRvalue(output);
+<FONT ID="LN">337 </FONT><A NAME="337"></A>            }
+<FONT ID="LN">338 </FONT><A NAME="338"></A>            output.addNoArgInstruction(ICONST_1);
+<FONT ID="LN">339 </FONT><A NAME="339"></A>            output.addNoArgInstruction(IADD);
 <FONT ID="LN">340 </FONT><A NAME="340"></A>            ((<A HREF="../jminusminus/JLhs.java.html">JLhs</A>) arg).codegenStore(output);
 <FONT ID="LN">341 </FONT><A NAME="341"></A>        }
 <FONT ID="LN">342 </FONT><A NAME="342"></A>    }
 <FONT ID="LN">343 </FONT><A NAME="343"></A>
 <FONT ID="LN">344 </FONT><A NAME="344"></A>}
-<FONT ID="LN">345 </FONT><A NAME="345"></A></pre>
+<FONT ID="LN">345 </FONT><A NAME="345"></A>
+<FONT ID="LN">346 </FONT><A NAME="346"></A>
+<FONT ID="LN">347 </FONT><A NAME="347"></A><FONT ID="FormalComment">/**
+<FONT ID="LN">348 </FONT><A NAME="348"></A> * The AST node for a ++expr expression.
+<FONT ID="LN">349 </FONT><A NAME="349"></A> */</FONT>
+<FONT ID="LN">350 </FONT><A NAME="350"></A>
+<FONT ID="LN">351 </FONT><A NAME="351"></A><FONT ID="Class">class</FONT> JPreIncrementOp <FONT ID="Extends">extends</FONT> <A HREF="../jminusminus/JUnaryExpression.java.html">JUnaryExpression</A> {
+<FONT ID="LN">352 </FONT><A NAME="352"></A>
+<FONT ID="LN">353 </FONT><A NAME="353"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">354 </FONT><A NAME="354"></A>     * Construct an AST node for a ++expr given its line number, and the
+<FONT ID="LN">355 </FONT><A NAME="355"></A>     * operand.
+<FONT ID="LN">356 </FONT><A NAME="356"></A>     * 
+<FONT ID="LN">357 </FONT><A NAME="357"></A>     * @param line
+<FONT ID="LN">358 </FONT><A NAME="358"></A>     *            line in which the expression occurs in the source file.
+<FONT ID="LN">359 </FONT><A NAME="359"></A>     * @param arg
+<FONT ID="LN">360 </FONT><A NAME="360"></A>     *            the operand.
+<FONT ID="LN">361 </FONT><A NAME="361"></A>     */</FONT>
+<FONT ID="LN">362 </FONT><A NAME="362"></A>
+<FONT ID="LN">363 </FONT><A NAME="363"></A>    <FONT ID="Public">public</FONT> JPreIncrementOp(<FONT ID="Int">int</FONT> line, <A HREF="../jminusminus/JExpression.java.html">JExpression</A> arg) {
+<FONT ID="LN">364 </FONT><A NAME="364"></A>        <FONT ID="Super">super</FONT>(line, <FONT ID="StringLiteral">"++pre"</FONT>, arg);
+<FONT ID="LN">365 </FONT><A NAME="365"></A>    }
+<FONT ID="LN">366 </FONT><A NAME="366"></A>
+<FONT ID="LN">367 </FONT><A NAME="367"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">368 </FONT><A NAME="368"></A>     * Analyze the operand as a lhs (since there is a side effect), check types
+<FONT ID="LN">369 </FONT><A NAME="369"></A>     * and determine the type of the result.
+<FONT ID="LN">370 </FONT><A NAME="370"></A>     * 
+<FONT ID="LN">371 </FONT><A NAME="371"></A>     * @param context
+<FONT ID="LN">372 </FONT><A NAME="372"></A>     *            context in which names are resolved.
+<FONT ID="LN">373 </FONT><A NAME="373"></A>     * @return the analyzed (and possibly rewritten) AST subtree.
+<FONT ID="LN">374 </FONT><A NAME="374"></A>     */</FONT>
+<FONT ID="LN">375 </FONT><A NAME="375"></A>
+<FONT ID="LN">376 </FONT><A NAME="376"></A>    <FONT ID="Public">public</FONT> <A HREF="../jminusminus/JExpression.java.html">JExpression</A> analyze(<A HREF="../jminusminus/Context.java.html">Context</A> context) {
+<FONT ID="LN">377 </FONT><A NAME="377"></A>        <FONT ID="If">if</FONT> (!(arg <FONT ID="InstanceOf">instanceof</FONT> <A HREF="../jminusminus/JLhs.java.html">JLhs</A>)) {
+<FONT ID="LN">378 </FONT><A NAME="378"></A>            JAST.compilationUnit.reportSemanticError(line,
+<FONT ID="LN">379 </FONT><A NAME="379"></A>                    <FONT ID="StringLiteral">"Operand to ++expr must have an LValue."</FONT>);
+<FONT ID="LN">380 </FONT><A NAME="380"></A>            type = Type.ANY;
+<FONT ID="LN">381 </FONT><A NAME="381"></A>        } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">382 </FONT><A NAME="382"></A>            arg = (<A HREF="../jminusminus/JExpression.java.html">JExpression</A>) arg.analyze(context);
+<FONT ID="LN">383 </FONT><A NAME="383"></A>            arg.type().mustMatchExpected(line(), Type.INT);
+<FONT ID="LN">384 </FONT><A NAME="384"></A>            type = Type.INT;
+<FONT ID="LN">385 </FONT><A NAME="385"></A>        }
+<FONT ID="LN">386 </FONT><A NAME="386"></A>        <FONT ID="Return">return</FONT> <FONT ID="This">this</FONT>;
+<FONT ID="LN">387 </FONT><A NAME="387"></A>    }
+<FONT ID="LN">388 </FONT><A NAME="388"></A>
+<FONT ID="LN">389 </FONT><A NAME="389"></A>    <FONT ID="FormalComment">/**
+<FONT ID="LN">390 </FONT><A NAME="390"></A>     * In generating code for a pre-increment operation, we treat simple
+<FONT ID="LN">391 </FONT><A NAME="391"></A>     * variable (JVariable) operands specially since the JVM has an increment
+<FONT ID="LN">392 </FONT><A NAME="392"></A>     * instruction. Otherwise, we rely on the JLhs code generation support for
+<FONT ID="LN">393 </FONT><A NAME="393"></A>     * generating the proper code. Notice that we distinguish between
+<FONT ID="LN">394 </FONT><A NAME="394"></A>     * expressions that are statement expressions and those that are not; we
+<FONT ID="LN">395 </FONT><A NAME="395"></A>     * insure the proper value (after the increment) is left atop the stack in
+<FONT ID="LN">396 </FONT><A NAME="396"></A>     * the latter case.
+<FONT ID="LN">397 </FONT><A NAME="397"></A>     * 
+<FONT ID="LN">398 </FONT><A NAME="398"></A>     * @param output
+<FONT ID="LN">399 </FONT><A NAME="399"></A>     *            the code emitter (basically an abstraction for producing the
+<FONT ID="LN">400 </FONT><A NAME="400"></A>     *            .class file).
+<FONT ID="LN">401 </FONT><A NAME="401"></A>     */</FONT>
+<FONT ID="LN">402 </FONT><A NAME="402"></A>
+<FONT ID="LN">403 </FONT><A NAME="403"></A>    <FONT ID="Public">public</FONT> <FONT ID="Void">void</FONT> codegen(<A HREF="../jminusminus/CLEmitter.java.html">CLEmitter</A> output) {
+<FONT ID="LN">404 </FONT><A NAME="404"></A>        <FONT ID="If">if</FONT> (arg <FONT ID="InstanceOf">instanceof</FONT> <A HREF="../jminusminus/JVariable.java.html">JVariable</A>) {
+<FONT ID="LN">405 </FONT><A NAME="405"></A>            <FONT ID="SingleLineComment">// A local variable; otherwise analyze() would
+<FONT ID="LN">406 </FONT><A NAME="406"></A></FONT>            <FONT ID="SingleLineComment">// have replaced it with an explicit field selection.
+<FONT ID="LN">407 </FONT><A NAME="407"></A></FONT>            <FONT ID="Int">int</FONT> offset = ((LocalVariableDefn) ((<A HREF="../jminusminus/JVariable.java.html">JVariable</A>) arg).iDefn())
+<FONT ID="LN">408 </FONT><A NAME="408"></A>                    .offset();
+<FONT ID="LN">409 </FONT><A NAME="409"></A>            output.addIINCInstruction(offset, <FONT ID="IntegerLiteral">1</FONT>);
+<FONT ID="LN">410 </FONT><A NAME="410"></A>            <FONT ID="If">if</FONT> (!isStatementExpression) {
+<FONT ID="LN">411 </FONT><A NAME="411"></A>                <FONT ID="SingleLineComment">// Loading its original rvalue
+<FONT ID="LN">412 </FONT><A NAME="412"></A></FONT>                arg.codegen(output);
+<FONT ID="LN">413 </FONT><A NAME="413"></A>            }
+<FONT ID="LN">414 </FONT><A NAME="414"></A>        } <FONT ID="Else">else</FONT> {
+<FONT ID="LN">415 </FONT><A NAME="415"></A>            ((<A HREF="../jminusminus/JLhs.java.html">JLhs</A>) arg).codegenLoadLhsLvalue(output);
+<FONT ID="LN">416 </FONT><A NAME="416"></A>            ((<A HREF="../jminusminus/JLhs.java.html">JLhs</A>) arg).codegenLoadLhsRvalue(output);
+<FONT ID="LN">417 </FONT><A NAME="417"></A>            output.addNoArgInstruction(ICONST_1);
+<FONT ID="LN">418 </FONT><A NAME="418"></A>            output.addNoArgInstruction(IADD);
+<FONT ID="LN">419 </FONT><A NAME="419"></A>            <FONT ID="If">if</FONT> (!isStatementExpression) {
+<FONT ID="LN">420 </FONT><A NAME="420"></A>                <FONT ID="SingleLineComment">// Loading its original rvalue
+<FONT ID="LN">421 </FONT><A NAME="421"></A></FONT>                ((<A HREF="../jminusminus/JLhs.java.html">JLhs</A>) arg).codegenDuplicateRvalue(output);
+<FONT ID="LN">422 </FONT><A NAME="422"></A>            }
+<FONT ID="LN">423 </FONT><A NAME="423"></A>            ((<A HREF="../jminusminus/JLhs.java.html">JLhs</A>) arg).codegenStore(output);
+<FONT ID="LN">424 </FONT><A NAME="424"></A>        }
+<FONT ID="LN">425 </FONT><A NAME="425"></A>    }
+<FONT ID="LN">426 </FONT><A NAME="426"></A>
+<FONT ID="LN">427 </FONT><A NAME="427"></A>}
+<FONT ID="LN">428 </FONT><A NAME="428"></A></pre>
 </BODY>
 </HTML>
